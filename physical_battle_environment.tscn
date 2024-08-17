@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dr8lsooa8abcl"]
 
-[ext_resource type="Script" path="res://boss_behavior.gd" id="1_yw1mj"]
+[ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
-[ext_resource type="Script" path="res://tooth_mech_controller.gd" id="3_3qkhs"]
-[ext_resource type="Script" path="res://fairy_controller.gd" id="4_3g6bn"]
+[ext_resource type="Script" path="res://entity/tooth_mech.gd" id="3_mnq2a"]
+[ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cbwb1"]
 
@@ -13,13 +13,13 @@
 
 [node name="PhysicalBattleEnvironment" type="Node2D"]
 
-[node name="BossMonster" type="Node2D" parent="." node_paths=PackedStringArray("move_target")]
+[node name="CthonicClient" type="Node2D" parent="." node_paths=PackedStringArray("move_target")]
 position = Vector2(-364, 241)
 scale = Vector2(100, 100)
-script = ExtResource("1_yw1mj")
+script = ExtResource("1_0bep3")
 move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 
-[node name="Sprite2D" type="Sprite2D" parent="BossMonster"]
+[node name="Sprite2D" type="Sprite2D" parent="CthonicClient"]
 texture = SubResource("PlaceholderTexture2D_cbwb1")
 
 [node name="Camera2D_TEMPORARY" type="Camera2D" parent="."]
@@ -27,7 +27,7 @@ script = ExtResource("2_8ghd0")
 
 [node name="ToothMech" type="Node2D" parent="."]
 scale = Vector2(100, 100)
-script = ExtResource("3_3qkhs")
+script = ExtResource("3_mnq2a")
 
 [node name="Sprite2D" type="Sprite2D" parent="ToothMech"]
 texture = SubResource("PlaceholderTexture2D_h06q3")
@@ -35,9 +35,7 @@ texture = SubResource("PlaceholderTexture2D_h06q3")
 [node name="Fairy" type="Node2D" parent="." node_paths=PackedStringArray("tooth_mech")]
 position = Vector2(7, 105)
 scale = Vector2(20, 20)
-script = ExtResource("4_3g6bn")
-speed = 200.0
-boost_speed = 2.0
+script = ExtResource("4_1q45q")
 tooth_mech = NodePath("../ToothMech")
 
 [node name="Sprite2D" type="Sprite2D" parent="Fairy"]
