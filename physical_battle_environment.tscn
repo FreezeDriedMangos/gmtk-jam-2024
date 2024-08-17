@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr8lsooa8abcl"]
+
+[ext_resource type="Script" path="res://boss_behavior.gd" id="1_yw1mj"]
+
+[node name="PhysicalBattleEnvironment" type="Node2D"]
+
+[node name="BossMonster" type="Node2D" parent="."]
+script = ExtResource("1_yw1mj")
