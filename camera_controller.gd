@@ -1,4 +1,4 @@
-extends Node
+class_name CameraController extends Node
 
 # needs two modes: tracking mech and tracking fairy
 # needs to be able to transition between those modes

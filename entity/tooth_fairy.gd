@@ -1,4 +1,4 @@
-extends Node2D
+class_name ToothFairy extends Node2D
 
 @export var starting_distance = 70
 @export var friction: float = 0.1

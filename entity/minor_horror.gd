@@ -1,0 +1,1 @@
+class_name MinorHorror extends Node2D
