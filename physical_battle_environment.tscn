@@ -13,10 +13,11 @@
 
 [node name="PhysicalBattleEnvironment" type="Node2D"]
 
-[node name="BossMonster" type="Node2D" parent="."]
+[node name="BossMonster" type="Node2D" parent="." node_paths=PackedStringArray("move_target")]
 position = Vector2(-364, 241)
 scale = Vector2(100, 100)
 script = ExtResource("1_yw1mj")
+move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 
 [node name="Sprite2D" type="Sprite2D" parent="BossMonster"]
 texture = SubResource("PlaceholderTexture2D_cbwb1")
@@ -32,6 +33,8 @@ script = ExtResource("3_3qkhs")
 texture = SubResource("PlaceholderTexture2D_h06q3")
 
 [node name="Fairy" type="Node2D" parent="." node_paths=PackedStringArray("tooth_mech")]
+position = Vector2(7, 105)
+scale = Vector2(20, 20)
 script = ExtResource("4_3g6bn")
 speed = 1.0
 boost_speed = 2.0
@@ -39,3 +42,5 @@ tooth_mech = NodePath("../ToothMech")
 
 [node name="Sprite2D" type="Sprite2D" parent="Fairy"]
 texture = SubResource("PlaceholderTexture2D_1pcch")
+
+[node name="TEMPORARY_MONSTER_ATTRACTOR" type="Node2D" parent="."]
