@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=5 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://boss_behavior.gd" id="1_yw1mj"]
+[ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
+[ext_resource type="Script" path="res://tooth_mech_controller.gd" id="3_3qkhs"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cbwb1"]
 
@@ -15,3 +17,7 @@ script = ExtResource("1_yw1mj")
 texture = SubResource("PlaceholderTexture2D_cbwb1")
 
 [node name="Camera2D_TEMPORARY" type="Camera2D" parent="."]
+script = ExtResource("2_8ghd0")
+
+[node name="ToothMech" type="Node2D" parent="."]
+script = ExtResource("3_3qkhs")
