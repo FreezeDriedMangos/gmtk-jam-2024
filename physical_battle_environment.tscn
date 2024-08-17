@@ -36,7 +36,7 @@ texture = SubResource("PlaceholderTexture2D_h06q3")
 position = Vector2(7, 105)
 scale = Vector2(20, 20)
 script = ExtResource("4_3g6bn")
-speed = 1.0
+speed = 200.0
 boost_speed = 2.0
 tooth_mech = NodePath("../ToothMech")
 
