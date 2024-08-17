@@ -3,12 +3,12 @@ class_name ToothFairy extends Entity
 @export var starting_distance = 70
 @export var speed: float = 200
 @export var boost_speed: float
-@export var tooth_mech: Node2D
+@export var tooth_mech: Node3D
 
-@export var velocity = Vector2()
+@export var velocity = Vector3()
 
 func _ready() -> void:
-	self.position = tooth_mech.position + Vector2(0, -self.starting_distance)
+	self.position = tooth_mech.position + Vector3(0, -self.starting_distance, 0)
 	self.velocity = Vector2(speed, 0)
 
 
