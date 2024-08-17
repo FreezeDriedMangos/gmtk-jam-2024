@@ -1,7 +1,7 @@
 class_name MinorHorror extends Entity
 
 @export var move_speed : float = 0.1
-@export var move_target : Node2D
+@export var move_target : Node3D
 @export var size : float #radius of circular collider
 
 func _process(delta: float) -> void:
@@ -10,4 +10,3 @@ func _process(delta: float) -> void:
 
 func get_tooth_mech():
 	return GamestateManagerGlobal.get_tooth_mech()
-
