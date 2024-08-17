@@ -1,7 +1,6 @@
 class_name ToothFairy extends Node2D
 
 @export var starting_distance = 70
-@export var friction: float = 0.1
 @export var speed: float
 @export var boost_speed: float
 @export var tooth_mech: Node2D
@@ -18,10 +17,6 @@ func _process(delta: float) -> void:
 	var circling_direction = tooth_mech.position - self.position
 	
 	velocity += circling_direction
-	velocity += input_direction * speed
-	
-	if self.velocity.length_squared() > speed**2:
-		self.velocity = self.velocity.lerp(self.velocity.normalized() * speed, self.friction)
 	
 	self.position += self.velocity * delta
-	
+	self.position += input_direction * speed * delta
