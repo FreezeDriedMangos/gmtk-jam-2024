@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=3 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://boss_behavior.gd" id="1_yw1mj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cbwb1"]
 
 [node name="PhysicalBattleEnvironment" type="Node2D"]
 
 [node name="BossMonster" type="Node2D" parent="."]
+position = Vector2(-364, 241)
+scale = Vector2(100, 100)
 script = ExtResource("1_yw1mj")
+
+[node name="Sprite2D" type="Sprite2D" parent="BossMonster"]
+texture = SubResource("PlaceholderTexture2D_cbwb1")
+
+[node name="Camera2D_TEMPORARY" type="Camera2D" parent="."]
