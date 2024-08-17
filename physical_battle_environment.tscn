@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=8 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://boss_behavior.gd" id="1_yw1mj"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://fairy_controller.gd" id="4_3g6bn"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cbwb1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h06q3"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_1pcch"]
 
 [node name="PhysicalBattleEnvironment" type="Node2D"]
 
@@ -21,7 +25,17 @@ texture = SubResource("PlaceholderTexture2D_cbwb1")
 script = ExtResource("2_8ghd0")
 
 [node name="ToothMech" type="Node2D" parent="."]
+scale = Vector2(100, 100)
 script = ExtResource("3_3qkhs")
 
-[node name="Fairy" type="Node2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="ToothMech"]
+texture = SubResource("PlaceholderTexture2D_h06q3")
+
+[node name="Fairy" type="Node2D" parent="." node_paths=PackedStringArray("tooth_mech")]
 script = ExtResource("4_3g6bn")
+speed = 1.0
+boost_speed = 2.0
+tooth_mech = NodePath("../ToothMech")
+
+[node name="Sprite2D" type="Sprite2D" parent="Fairy"]
+texture = SubResource("PlaceholderTexture2D_1pcch")
