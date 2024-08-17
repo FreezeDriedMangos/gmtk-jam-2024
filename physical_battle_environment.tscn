@@ -22,9 +22,6 @@ move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 [node name="Sprite2D" type="Sprite2D" parent="CthonicClient"]
 texture = SubResource("PlaceholderTexture2D_cbwb1")
 
-[node name="Camera2D_TEMPORARY" type="Camera2D" parent="."]
-script = ExtResource("2_8ghd0")
-
 [node name="ToothMech" type="Node2D" parent="."]
 scale = Vector2(100, 100)
 script = ExtResource("3_mnq2a")
@@ -42,3 +39,7 @@ tooth_mech = NodePath("../ToothMech")
 texture = SubResource("PlaceholderTexture2D_1pcch")
 
 [node name="TEMPORARY_MONSTER_ATTRACTOR" type="Node2D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy")]
+script = ExtResource("2_8ghd0")
+fairy = NodePath("../Fairy")

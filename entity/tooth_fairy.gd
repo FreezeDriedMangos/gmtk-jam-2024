@@ -1,7 +1,7 @@
 class_name ToothFairy extends Node2D
 
 @export var starting_distance = 70
-@export var speed: float
+@export var speed: float = 200
 @export var boost_speed: float
 @export var tooth_mech: Node2D
 
