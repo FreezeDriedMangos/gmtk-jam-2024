@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://prf5q5yt342t"
-path="res://.godot/imported/temp_ground.png-ad8b3be4c3f0b522c06b3b95dc29d032.ctex"
+uid="uid://cksq1rtv17hvp"
+path.s3tc="res://.godot/imported/money_coin.png-3cf1854e330edd704a4286e907027963.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://temp_ground.png"
-dest_files=["res://.godot/imported/temp_ground.png-ad8b3be4c3f0b522c06b3b95dc29d032.ctex"]
+source_file="res://money_coin.png"
+dest_files=["res://.godot/imported/money_coin.png-3cf1854e330edd704a4286e907027963.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
