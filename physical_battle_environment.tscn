@@ -16,8 +16,7 @@
 [node name="CthonicClient" type="Node3D" parent="." node_paths=PackedStringArray("move_target")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 0, -364, 241, 0)
 script = ExtResource("1_0bep3")
-move_speed = null
-move_target = NodePath("")
+move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 
 [node name="Sprite2D" type="Sprite2D" parent="CthonicClient"]
 texture = SubResource("PlaceholderTexture2D_cbwb1")
@@ -32,7 +31,7 @@ texture = SubResource("PlaceholderTexture2D_h06q3")
 [node name="Fairy" type="Node3D" parent="." node_paths=PackedStringArray("tooth_mech")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 0, 7, 105, 0)
 script = ExtResource("4_1q45q")
-tooth_mech = NodePath("")
+tooth_mech = NodePath("../ToothMech")
 
 [node name="Sprite2D" type="Sprite2D" parent="Fairy"]
 texture = SubResource("PlaceholderTexture2D_1pcch")
@@ -41,4 +40,4 @@ texture = SubResource("PlaceholderTexture2D_1pcch")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy")]
 script = ExtResource("2_8ghd0")
-fairy = NodePath("")
+fairy = NodePath("../Fairy")
