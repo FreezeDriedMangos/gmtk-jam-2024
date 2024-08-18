@@ -6,6 +6,8 @@ class_name GamestateManager extends Node
 @export var cthonic_clients : Array[CthonicClient]
 @export var minor_horrors : Array[MinorHorror]
 
+@export var paused : bool
+
 func _ready():
 	return
 
@@ -26,12 +28,9 @@ func kill_entity(entity:Entity):
 func apply_damage(damage:int, hit_entity:Entity, attacker:Entity):
 	hit_entity.take_damage(damage)
 
+func is_paused():
+	return paused
 
-func pause_game():
-	for entity:Entity in all_entities:
-		entity.pause()
 
-func unpause_game():
-	for entity:Entity in all_entities:
-		entity.unpause()
+
 	
