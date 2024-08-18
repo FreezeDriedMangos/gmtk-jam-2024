@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2khlh47yoxxw"
-path="res://.godot/imported/money_coin_2.png-1b718925d1944ee056e2da3559d1b79a.ctex"
+uid="uid://c3xup71ndptis"
+path="res://.godot/imported/minor_horror_strata_1_frame_1.png-353d2115eacb410490e167dc06fa3809.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://money_coin_2.png"
-dest_files=["res://.godot/imported/money_coin_2.png-1b718925d1944ee056e2da3559d1b79a.ctex"]
+source_file="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_1.png"
+dest_files=["res://.godot/imported/minor_horror_strata_1_frame_1.png-353d2115eacb410490e167dc06fa3809.ctex"]
 
 [params]
 
