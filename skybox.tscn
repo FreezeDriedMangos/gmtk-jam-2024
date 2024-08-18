@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcoq8heog82we"]
+
+[ext_resource type="PackedScene" uid="uid://pcon48f4atcx" path="res://model/skybox_model.fbx" id="1_du64o"]
+[ext_resource type="Texture2D" uid="uid://bgglo4ke1vr4g" path="res://background_placeholder.png" id="2_ghr6f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq7r3"]
+albedo_texture = ExtResource("2_ghr6f")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b3sr7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auwon"]
+albedo_color = Color(1, 0.521569, 0.670588, 1)
+
+[node name="skybox" instance=ExtResource("1_du64o")]
+
+[node name="Cylinder" parent="." index="0"]
+gi_mode = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_jq7r3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.36263, 0)
+mesh = SubResource("PlaneMesh_b3sr7")
+surface_material_override/0 = SubResource("StandardMaterial3D_auwon")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -0.0584831, 0)
+light_size = 1.0
