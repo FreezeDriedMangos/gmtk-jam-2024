@@ -1,6 +1,9 @@
 class_name Entity extends Node3D
 #base entity class for all things in the game that can die and otherwise factor into gameplay
 @export var health:int
+@export var radius:float
+@export var base_move_speed : float = 1.0
+
 var paused:bool
 
 func die():
@@ -11,10 +14,5 @@ func take_damage(damage:int):
 	if(health < 0):
 		die()
 
-func pause():
-	paused = true
-	return
-
-func unpause():
-	paused = false
-	return
+func is_game_paused():
+	return GamestateManagerGlobal.is_paused()

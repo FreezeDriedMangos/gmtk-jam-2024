@@ -1,7 +1,6 @@
 class_name ToothFairy extends Entity
 
 @export var starting_distance = 70
-@export var speed: float = 10
 @export var boost_speed: float = 30
 @export var strafe_speed: float = 5
 @export var tooth_mech: Node3D
@@ -21,6 +20,7 @@ var boosting = true
 var mousePos_cameraRelative = Vector3()
 
 func _ready() -> void:
+	base_move_speed = 10
 	pass
 	#self.position = tooth_mech.position + Vector3(0, 0, -self.starting_distance)
 	#self.velocity = Vector3(speed, 0, 0)
@@ -87,6 +87,7 @@ func _process(delta: float) -> void:
 		var friction = lerp(min_friction, max_friction, friction_scale)
 		#self.velocity *= friction
 		#self.velocity += (1-friction) * desired_dir.normalized()*speed	
+		var speed = boost_speed if boosting else base_move_speed
 		self.velocity = self.velocity*friction + (1-friction)*Vector3(sin(facing), 0, cos(facing))*speed
 		
 	

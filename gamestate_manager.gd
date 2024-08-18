@@ -6,7 +6,14 @@ class_name GamestateManager extends Node
 @export var cthonic_clients : Array[CthonicClient]
 @export var minor_horrors : Array[MinorHorror]
 
+
+@export var paused : bool
+@export var damage_tick_size_ms : int = 1000 #one second
+
+var last_damage_tick: int 
+
 func _ready():
+	last_damage_tick = Time.get_ticks_msec()
 	return
 
 func register_entity(entity:Entity):
@@ -26,12 +33,40 @@ func kill_entity(entity:Entity):
 func apply_damage(damage:int, hit_entity:Entity, attacker:Entity):
 	hit_entity.take_damage(damage)
 
+func is_paused():
+	return paused
 
-func pause_game():
-	for entity:Entity in all_entities:
-		entity.pause()
 
-func unpause_game():
-	for entity:Entity in all_entities:
-		entity.unpause()
+func _process(delta):
+	if paused:
+		return
+
+	# update tick-based things like DPS -- this will be fine and 
+	## only execute once when the game unpauses (rather than damage accumulating over the pause period)
+	var damage_tick = false
+	var current_ms = Time.get_ticks_msec()
+	if current_ms - last_damage_tick > damage_tick_size_ms:
+		damage_tick = true
+		last_damage_tick = current_ms
+	
+	#handle "collisions"
+	for horror in minor_horrors:
+		if horror.position.distance_to(tooth_fairy.position) < (horror.radius + tooth_fairy.radius):
+			apply_damage(100, horror, tooth_fairy)
+		
+		if horror.position.distance_to(tooth_mech.position) < (horror.radius + tooth_mech.radius):
+			if !horror.latched:
+				horror.latch()
+			else:
+				if damage_tick:
+					apply_damage(horror.damage_per_second, tooth_mech, horror)
+
+		else:
+			if horror.latched:
+				horror.unlatch()
+
+
+
+
+
 	
