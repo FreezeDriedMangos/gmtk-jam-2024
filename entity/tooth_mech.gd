@@ -7,6 +7,7 @@ class_name ToothMech extends Entity
 func _ready() -> void:
 	super()
 	base_move_speed = 0.1
+	radius = 10
 	pass # Replace with function body.
 
 

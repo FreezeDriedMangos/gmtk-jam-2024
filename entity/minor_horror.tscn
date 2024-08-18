@@ -1,3 +1,90 @@
-[gd_scene format=3 uid="uid://cba5h1v4kswxb"]
+[gd_scene load_steps=17 format=3 uid="uid://bmprv2bjcm8jq"]
 
-[node name="MinorHorror" type="Node3D"]
+[ext_resource type="Script" path="res://entity/minor_horror.gd" id="1_drngm"]
+[ext_resource type="Texture2D" uid="uid://c3xup71ndptis" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_1.png" id="2_c4l82"]
+[ext_resource type="Texture2D" uid="uid://dyq0m6slmvx7a" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_2.png" id="3_8y60j"]
+[ext_resource type="Texture2D" uid="uid://c2uonoej8rrki" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_3.png" id="4_ojqki"]
+[ext_resource type="Texture2D" uid="uid://3jvbdujymohj" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_4.png" id="5_jo23t"]
+[ext_resource type="Texture2D" uid="uid://ce28kh4lp07d4" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_5.png" id="6_h2ae6"]
+[ext_resource type="Texture2D" uid="uid://dp48naaw28r6a" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_6.png" id="7_ivtcj"]
+[ext_resource type="Texture2D" uid="uid://bura3w7ly80n6" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_1.png" id="8_x4jur"]
+[ext_resource type="Texture2D" uid="uid://ds23jj7t46fbf" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_2.png" id="9_yrtby"]
+[ext_resource type="Texture2D" uid="uid://xfftmsjycavi" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_3.png" id="10_w21ls"]
+[ext_resource type="Texture2D" uid="uid://dnngd7cuo4rkd" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_4.png" id="11_3g8mf"]
+[ext_resource type="Texture2D" uid="uid://cw0c5u32yvse5" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_5.png" id="12_6uk82"]
+[ext_resource type="Texture2D" uid="uid://coxrq6qpjcam2" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_6.png" id="13_8j21o"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fvn5y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_om1x2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c4l82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8y60j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ojqki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jo23t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h2ae6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ivtcj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44l1g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_x4jur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yrtby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_w21ls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3g8mf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6uk82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8j21o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MinorHorror" type="Node3D" node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_drngm")
+mesh = NodePath("Mesh")
+drill_rads_sec_current = 20.0
+base_move_speed = 22.0
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, 0.5, 0.5, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_fvn5y")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_om1x2")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="AnimatedSprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.46851e-10, -0.0125105)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_44l1g")

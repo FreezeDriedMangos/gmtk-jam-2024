@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=29 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
 [ext_resource type="PackedScene" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
-[ext_resource type="Texture2D" path="res://tooth_fairy.png" id="6_7d4bd"]
+[ext_resource type="Texture2D" uid="uid://b7iekoxtnlnn" path="res://sprites/antidentiphobia/tooth_fairy.png" id="6_7d4bd"]
+[ext_resource type="PackedScene" path="res://entity/minor_horror.tscn" id="6_erii8"]
 [ext_resource type="Texture2D" uid="uid://prf5q5yt342t" path="res://temp_ground.png" id="8_tuuuo"]
 [ext_resource type="Texture2D" uid="uid://c3xup71ndptis" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_1.png" id="9_1cf56"]
 [ext_resource type="Texture2D" uid="uid://dyq0m6slmvx7a" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_2.png" id="10_6ggtr"]
@@ -127,6 +128,12 @@ shape = SubResource("BoxShape3D_21ui5")
 [node name="TEMPORARY_MONSTER_ATTRACTOR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.57154)
 
+[node name="MinorHorror" parent="." instance=ExtResource("6_erii8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+drill_rads_sec_current = 20.0
+health = 0
+base_move_speed = 22.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xv67j")
 camera_attributes = SubResource("CameraAttributesPractical_0nsna")
@@ -147,7 +154,7 @@ texture_filter = 0
 texture = ExtResource("8_tuuuo")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.58794, -0.0407468, -0.111266)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_o3jmp")
 frame_progress = 0.110107

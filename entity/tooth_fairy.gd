@@ -22,6 +22,7 @@ var mousePos_cameraRelative = Vector3()
 func _ready() -> void:
 	super()
 	base_move_speed = 10
+	radius = 1
 	pass
 	#self.position = tooth_mech.position + Vector3(0, 0, -self.starting_distance)
 	#self.velocity = Vector3(speed, 0, 0)
@@ -33,7 +34,7 @@ func _input(event):
 		#print("Mouse Click/Unclick at: ", event.position)
 		if event.button_index == 1:
 			boosting = event.pressed
-		print("EVENT DETAILS %s %s " % [event.button_index, event.pressed])
+		#print("EVENT DETAILS %s %s " % [event.button_index, event.pressed])
 	elif event is InputEventMouseMotion:
 		#target_facing -= event.relative.x * turning_sensitivity
 		var rect = camera.get_viewport().size
@@ -64,7 +65,7 @@ func _process(delta: float) -> void:
 	
 	if intersection:
 		#intersection = intersection["position"]
-		print("location %s" % intersection)
+		#print("location %s" % intersection)
 		var desired_dir = Vector3(intersection.x, 0, intersection.z) - self.position
 		
 		# 
@@ -83,7 +84,7 @@ func _process(delta: float) -> void:
 		
 		#move forward not towards mouse directly
 		
-		print("%s %s %s %s" % [desired_facing, facing, facing_delta, max_facing_delta/PI]) # why does this get all the way up to 6
+		#print("%s %s %s %s" % [desired_facing, facing, facing_delta, max_facing_delta/PI]) # why does this get all the way up to 6
 		var friction_scale = clamp(2* max_facing_delta / PI, 0, 1) ** 2
 		var friction = lerp(min_friction, max_friction, friction_scale)
 		#self.velocity *= friction
