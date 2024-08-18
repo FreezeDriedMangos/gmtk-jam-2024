@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://prf5q5yt342t"
-path="res://.godot/imported/temp_ground.png-ad8b3be4c3f0b522c06b3b95dc29d032.ctex"
+uid="uid://coxrq6qpjcam2"
+path="res://.godot/imported/minor_horror_strata_2_frame_6.png-3efadf9f669177c4a4cb3c1f42198084.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp_ground.png"
-dest_files=["res://.godot/imported/temp_ground.png-ad8b3be4c3f0b522c06b3b95dc29d032.ctex"]
+source_file="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_6.png"
+dest_files=["res://.godot/imported/minor_horror_strata_2_frame_6.png-3efadf9f669177c4a4cb3c1f42198084.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

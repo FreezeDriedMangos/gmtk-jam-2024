@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://prf5q5yt342t"
-path="res://.godot/imported/temp_ground.png-ad8b3be4c3f0b522c06b3b95dc29d032.ctex"
+uid="uid://b7iekoxtnlnn"
+path="res://.godot/imported/tooth_fairy.png-7572b5b627520e56166dc1a6766bb5f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://temp_ground.png"
-dest_files=["res://.godot/imported/temp_ground.png-ad8b3be4c3f0b522c06b3b95dc29d032.ctex"]
+source_file="res://sprites/antidentiphobia/tooth_fairy.png"
+dest_files=["res://.godot/imported/tooth_fairy.png-7572b5b627520e56166dc1a6766bb5f5.ctex"]
 
 [params]
 
