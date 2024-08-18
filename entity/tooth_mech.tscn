@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dus5x0oakqbsa"]
 
 [ext_resource type="Script" path="res://entity/tooth_mech.gd" id="1_tljki"]
-[ext_resource type="PackedScene" uid="uid://cxbb1jc5p0lk2" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
+[ext_resource type="PackedScene" uid="uid://dmkfydsnbq5i1" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
 
 [node name="ToothMech" type="Node3D"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_tljki")
 
 [node name="TOOTH_MECH" parent="." instance=ExtResource("2_occj6")]
@@ -41,3 +41,6 @@ light_energy = 10.0
 spot_range = 18.1851
 spot_angle = 52.3
 spot_angle_attenuation = 2.0
+
+[node name="CameraTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.223214)
