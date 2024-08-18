@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=15 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
 [ext_resource type="PackedScene" uid="uid://dus5x0oakqbsa" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
+[ext_resource type="PackedScene" uid="uid://cba5h1v4kswxb" path="res://entity/minor_horror.tscn" id="6_erii8"]
 [ext_resource type="Texture2D" uid="uid://b8tui20tpp506" path="res://placeholder_fairy.png" id="6_f00lo"]
 [ext_resource type="Texture2D" uid="uid://prf5q5yt342t" path="res://temp_ground.png" id="8_tuuuo"]
 
@@ -66,6 +67,16 @@ shape = SubResource("BoxShape3D_21ui5")
 
 [node name="TEMPORARY_MONSTER_ATTRACTOR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.57154)
+
+[node name="MinorHorror" parent="." instance=ExtResource("6_erii8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+move_target = Vector3(0, 0, 0)
+drill_rads_sec_default = 20.0
+drill_rads_sec_latched = 160.0
+drill_rads_sec_current = 20.0
+rotate_vector = Vector3(0, 0, 1)
+health = 0
+base_move_speed = 22.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xv67j")

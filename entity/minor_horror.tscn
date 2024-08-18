@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://cba5h1v4kswxb"]
+[gd_scene load_steps=3 format=3 uid="uid://cba5h1v4kswxb"]
 
-[node name="MinorHorror" type="Node3D"]
+[ext_resource type="Script" path="res://entity/minor_horror.gd" id="1_drngm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fvn5y"]
+
+[node name="MinorHorror" type="Node3D" node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_drngm")
+mesh = NodePath("Mesh")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, 0.5, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_fvn5y")

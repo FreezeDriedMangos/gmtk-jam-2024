@@ -1,7 +1,7 @@
 class_name Entity extends Node3D
 #base entity class for all things in the game that can die and otherwise factor into gameplay
-@export var health:int
-@export var radius:float
+@export var health:int = 100
+@export var radius:float = 1.0
 @export var base_move_speed : float = 1.0
 
 var paused:bool
