@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dus5x0oakqbsa"]
+
+[ext_resource type="Script" path="res://entity/tooth_mech.gd" id="1_tljki"]
+[ext_resource type="PackedScene" uid="uid://thifu23r83uw" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
+
+[node name="ToothMech" type="Node3D"]
+script = ExtResource("1_tljki")
+
+[node name="TOOTH_MECH" parent="." instance=ExtResource("2_occj6")]
