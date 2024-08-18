@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
 [ext_resource type="Texture2D" uid="uid://b8tui20tpp506" path="res://placeholder_fairy.png" id="6_f00lo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fr1mk"]
-albedo_texture = ExtResource("4_x82jq")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uye72"]
+albedo_texture = ExtResource("4_b3hy3")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aqfvk"]
 panorama = ExtResource("4_x82jq")
@@ -34,6 +34,7 @@ script = ExtResource("1_0bep3")
 move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 
 [node name="Sprite3D" type="Sprite3D" parent="CthonicClient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8006, 0)
 billboard = 2
 texture = ExtResource("2_fwq7i")
 
@@ -41,7 +42,8 @@ texture = ExtResource("2_fwq7i")
 script = ExtResource("3_mnq2a")
 
 [node name="Sprite3D" type="Sprite3D" parent="ToothMech"]
-material_override = SubResource("StandardMaterial3D_fr1mk")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95572, 0)
+material_override = SubResource("StandardMaterial3D_uye72")
 billboard = 2
 texture = ExtResource("4_b3hy3")
 
