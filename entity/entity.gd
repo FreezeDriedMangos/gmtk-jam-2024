@@ -6,6 +6,9 @@ class_name Entity extends Node3D
 
 var paused:bool
 
+func _ready():
+	GamestateManagerGlobal.register_entity(self)
+
 func die():
 	GamestateManagerGlobal.kill_entity(self)
 
