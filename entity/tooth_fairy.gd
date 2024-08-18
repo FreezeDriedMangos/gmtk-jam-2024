@@ -23,7 +23,7 @@ func _input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
 		#print("Mouse Click/Unclick at: ", event.position)
-		if event.button_index == 0:
+		if event.button_index == 1:
 			boosting = event.pressed
 		print("EVENT DETAILS %s %s " % [event.button_index, event.pressed])
 	elif event is InputEventMouseMotion:
