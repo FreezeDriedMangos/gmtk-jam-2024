@@ -5,6 +5,7 @@ class_name ToothMech extends Entity
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	base_move_speed = 0.1
 	pass # Replace with function body.
 
 

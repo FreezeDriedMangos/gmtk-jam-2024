@@ -1,7 +1,6 @@
 class_name ToothFairy extends Entity
 
 @export var starting_distance = 70
-@export var speed: float = 10
 @export var boost_speed: float = 30
 @export var strafe_speed: float = 5
 @export var tooth_mech: Node3D
@@ -15,6 +14,7 @@ var target_facing: float = 0
 var boosting = false
 
 func _ready() -> void:
+	base_move_speed = 10
 	pass
 	#self.position = tooth_mech.position + Vector3(0, 0, -self.starting_distance)
 	#self.velocity = Vector3(speed, 0, 0)
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	var strafe_direction = Input.get_axis("ui_left", "ui_right") * forwards
 	self.position += strafe_direction * strafe_speed * delta
 	
-	self.position += (boost_speed if boosting else speed) * forwards * delta
+	self.position += (boost_speed if boosting else base_move_speed) * forwards * delta
 	
 	var last_facing = facing
 	if abs(facing-target_facing) <= max_turn_speed:
