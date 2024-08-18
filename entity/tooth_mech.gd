@@ -1,5 +1,7 @@
 class_name ToothMech extends Entity
 
+@export var target:Entity
+@export var target_locator:Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
