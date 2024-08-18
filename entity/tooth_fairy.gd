@@ -1,16 +1,16 @@
 class_name ToothFairy extends Entity
 
 @export var starting_distance = 70
-@export var speed: float = 20
-@export var boost_speed: float = 40
+@export var speed: float = 10
+@export var boost_speed: float = 30
 @export var strafe_speed: float = 5
 @export var tooth_mech: Node3D
 
 #@export var velocity = Vector3()
-@export var max_turn_speed: float = 0.001
+@export var max_turn_speed: float = 0.0005
 var facing: float = 0
 var target_facing: float = 0
-@export var turning_sensitivity: float = 0.0001
+@export var turning_sensitivity: float = 0.001
 
 var boosting = false
 
@@ -27,10 +27,7 @@ func _input(event):
 			boosting = event.pressed
 		print("EVENT DETAILS %s %s " % [event.button_index, event.pressed])
 	elif event is InputEventMouseMotion:
-		#print("Mouse Motion at: ", event.position)
-		print("EVENT DETAILS %s %s %s" % [event.screen_velocity * turning_sensitivity, facing, target_facing])
-		target_facing -= event.screen_velocity.x * turning_sensitivity
-		#target_facing %= TAU
+		target_facing -= event.relative.x * turning_sensitivity
 	
 
 # redo as simple "always move forward, mouse left/right change facing dir, A/D strafe"
