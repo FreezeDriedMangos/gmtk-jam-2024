@@ -1,9 +1,43 @@
 [gd_scene load_steps=3 format=3 uid="uid://dus5x0oakqbsa"]
 
 [ext_resource type="Script" path="res://entity/tooth_mech.gd" id="1_tljki"]
-[ext_resource type="PackedScene" uid="uid://thifu23r83uw" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
+[ext_resource type="PackedScene" uid="uid://cxbb1jc5p0lk2" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
 
 [node name="ToothMech" type="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("1_tljki")
 
 [node name="TOOTH_MECH" parent="." instance=ExtResource("2_occj6")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.413899, 0.910323, 0, -0.910323, 0.413899, 0, 6.3836, 2.1642)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.0965926, 0.0258819, 0, -0.0258819, 0.0965926, 0.4, 1.4, -0.7)
+light_energy = 100.0
+spot_range = 100.0
+spot_angle = 18.2813
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpotLight3D2"]
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.0965926, 0.0258819, 0, -0.0258819, 0.0965926, -0.4, 1.4, -0.7)
+light_energy = 100.0
+spot_range = 100.0
+spot_angle = 18.2813
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SpotLight3D3"]
+light_energy = 10.0
+omni_range = 10.0
+
+[node name="TargetLocator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, -2.4)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TargetLocator"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, -1.11022e-16, 0, 1.11022e-16, 0.1, 0, 0, 1.2)
+light_energy = 10.0
+spot_range = 18.1851
+spot_angle = 52.3
+spot_angle_attenuation = 2.0

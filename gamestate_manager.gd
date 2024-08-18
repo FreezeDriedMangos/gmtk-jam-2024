@@ -23,6 +23,15 @@ func register_entity(entity:Entity):
 func kill_entity(entity:Entity):
 	entity.queue_free()
 
+func apply_damage(damage:int, hit_entity:Entity, attacker:Entity):
+	hit_entity.take_damage(damage)
 
-	
+
+func pause_game():
+	for entity:Entity in all_entities:
+		entity.pause()
+
+func unpause_game():
+	for entity:Entity in all_entities:
+		entity.unpause()
 	
