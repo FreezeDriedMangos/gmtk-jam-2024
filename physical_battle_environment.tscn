@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=28 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
 [ext_resource type="PackedScene" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
@@ -6,8 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
-[ext_resource type="Texture2D" uid="uid://b7iekoxtnlnn" path="res://tooth_fairy.png" id="6_7d4bd"]
+[ext_resource type="Texture2D" path="res://tooth_fairy.png" id="6_7d4bd"]
 [ext_resource type="Texture2D" uid="uid://prf5q5yt342t" path="res://temp_ground.png" id="8_tuuuo"]
+[ext_resource type="Texture2D" uid="uid://c3xup71ndptis" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_1.png" id="9_1cf56"]
+[ext_resource type="Texture2D" uid="uid://dyq0m6slmvx7a" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_2.png" id="10_6ggtr"]
+[ext_resource type="Texture2D" uid="uid://c2uonoej8rrki" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_3.png" id="11_ba0iu"]
+[ext_resource type="Texture2D" uid="uid://3jvbdujymohj" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_4.png" id="12_cfk31"]
+[ext_resource type="Texture2D" uid="uid://ce28kh4lp07d4" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_5.png" id="13_kbp1k"]
+[ext_resource type="Texture2D" uid="uid://dp48naaw28r6a" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_6.png" id="14_chd2s"]
+[ext_resource type="Texture2D" uid="uid://bura3w7ly80n6" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_1.png" id="15_243ur"]
+[ext_resource type="Texture2D" uid="uid://ds23jj7t46fbf" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_2.png" id="16_lmdqq"]
+[ext_resource type="Texture2D" uid="uid://xfftmsjycavi" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_3.png" id="17_ghj7e"]
+[ext_resource type="Texture2D" uid="uid://dnngd7cuo4rkd" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_4.png" id="18_6egpu"]
+[ext_resource type="Texture2D" uid="uid://cw0c5u32yvse5" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_5.png" id="19_rrorm"]
+[ext_resource type="Texture2D" uid="uid://coxrq6qpjcam2" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_6.png" id="20_28m7r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
 
@@ -24,6 +36,58 @@ ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0nsna"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3jmp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_1cf56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6ggtr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ba0iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cfk31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kbp1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_chd2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqlx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_243ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_lmdqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ghj7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6egpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rrorm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_28m7r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PhysicalBattleEnvironment" type="Node3D"]
 
@@ -81,3 +145,15 @@ fairy = NodePath("../Fairy")
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -1, 0)
 texture_filter = 0
 texture = ExtResource("8_tuuuo")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_o3jmp")
+frame_progress = 0.110107
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="AnimatedSprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.46851e-10, -0.0125105)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_vqlx0")
+frame_progress = 0.657372
