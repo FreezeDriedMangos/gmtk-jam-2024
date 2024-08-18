@@ -12,4 +12,4 @@ func take_damage(damage:int):
 		die()
 
 func is_game_paused():
-	return GamestateManagerGlobal.is_paused
+	return GamestateManagerGlobal.is_paused()
