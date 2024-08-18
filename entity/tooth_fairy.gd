@@ -35,7 +35,7 @@ func _input(event):
 
 # redo as simple "always move forward, mouse left/right change facing dir, A/D strafe"
 func _process(delta: float) -> void:
-	var forwards = -Vector3(sin(facing), 0, sin(facing))
+	var forwards = -self.get_global_transform().basis.z #-Vector3(sin(facing), 0, sin(facing))
 	var strafe_direction = Input.get_axis("ui_left", "ui_right") * forwards
 	self.position += strafe_direction * strafe_speed * delta
 	
