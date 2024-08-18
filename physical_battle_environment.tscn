@@ -35,16 +35,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00966, 0, 0)
 script = ExtResource("4_1q45q")
 tooth_mech = NodePath("../ToothMech")
 
+[node name="CameraTarget" type="Node3D" parent="Fairy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.223214)
+
 [node name="Sprite3D" type="Sprite3D" parent="Fairy"]
-billboard = 2
 texture_filter = 0
 texture = ExtResource("6_f00lo")
-
-[node name="Camera3D" type="Camera3D" parent="Fairy" node_paths=PackedStringArray("fairy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.223214)
-current = true
-script = ExtResource("2_8ghd0")
-fairy = NodePath("..")
 
 [node name="TEMPORARY_MONSTER_ATTRACTOR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.57154)
@@ -59,3 +55,9 @@ omni_range = 163.2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5byta")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy_target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00966, 0, 0.223214)
+current = true
+script = ExtResource("2_8ghd0")
+fairy_target = NodePath("../Fairy/CameraTarget")

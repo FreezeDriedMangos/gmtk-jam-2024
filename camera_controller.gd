@@ -4,10 +4,11 @@ class_name CameraController extends Node3D
 # needs to be able to transition between those modes
 # tracking code should be essentially the same, the only difference being the offset from the target object
 
-@export var speed: float = 100
-@export var height: float = 10
-@export var fairy: ToothFairy
 @export var fairy_mode: bool = true
+
+@export var fairy_follow_speed: float = 0.3
+@export var fairy_follow_rotation_speed: float = 0.6
+@export var fairy_target: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +18,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if fairy_mode:
-		pass
+		self.position = self.position.lerp(fairy_target.global_position, fairy_follow_speed)
+		
+		var ownQuat = Quaternion(transform.basis)
+		var targetQuat = Quaternion(fairy_target.global_basis)
+		self.basis = Basis(ownQuat.slerp(targetQuat, fairy_follow_rotation_speed))
+		
 		#self.position = fairy.position - fairy.velocity + Vector3(0, 0, height)
 		#self.look_at(Vector3(fairy.position.x, fairy.position.y, 0), Vector3(0, 0, 1))
 		
