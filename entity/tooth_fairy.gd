@@ -20,6 +20,7 @@ var boosting = true
 var mousePos_cameraRelative = Vector3()
 
 func _ready() -> void:
+	super()
 	base_move_speed = 10
 	pass
 	#self.position = tooth_mech.position + Vector3(0, 0, -self.starting_distance)
