@@ -4,5 +4,5 @@ class_name CthonicClient extends Entity
 @export var move_target : Node3D
 
 func _process(delta: float) -> void:
-	var dir = move_target.position - self.position 
+	var dir = move_target.position - self.position
 	self.position += dir.normalized() * move_speed * delta
