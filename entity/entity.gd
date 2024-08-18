@@ -11,10 +11,5 @@ func take_damage(damage:int):
 	if(health < 0):
 		die()
 
-func pause():
-	paused = true
-	return
-
-func unpause():
-	paused = false
-	return
+func is_game_paused():
+	return GamestateManagerGlobal.is_paused
