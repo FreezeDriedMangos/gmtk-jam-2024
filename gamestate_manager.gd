@@ -34,4 +34,3 @@ func pause_game():
 func unpause_game():
 	for entity:Entity in all_entities:
 		entity.unpause()
-	

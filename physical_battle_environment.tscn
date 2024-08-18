@@ -1,32 +1,32 @@
-[gd_scene load_steps=12 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=11 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
-[ext_resource type="PackedScene" uid="uid://dus5x0oakqbsa" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
-[ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
-[ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
 [ext_resource type="Texture2D" uid="uid://b8tui20tpp506" path="res://placeholder_fairy.png" id="6_f00lo"]
-[ext_resource type="Script" path="res://mouse_capture_controller.gd" id="9_qi6yb"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aqfvk"]
-panorama = ExtResource("4_x82jq")
-
-[sub_resource type="Sky" id="Sky_btq5d"]
-sky_material = SubResource("PanoramaSkyMaterial_aqfvk")
+[ext_resource type="Texture2D" uid="uid://bfrbflrm5uwc7" path="res://placeholder_ground.png" id="6_kysq0"]
+[ext_resource type="Texture2D" uid="uid://bby4s7uni1ry4" path="res://placeholder_mech.png" id="6_wurj7"]
 
 [sub_resource type="Environment" id="Environment_xv67j"]
-background_mode = 2
-sky = SubResource("Sky_btq5d")
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
+background_mode = 4
+background_color = Color(1, 1, 1, 1)
+background_canvas_max_layer = 1
+reflected_light_source = 1
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0nsna"]
 
-[node name="PhysicalBattleEnvironment" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spwur"]
+shading_mode = 0
+albedo_texture = ExtResource("6_kysq0")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+texture_filter = 0
 
-[node name="ToothMech" parent="." instance=ExtResource("1_6x8vs")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 34.3337)
+[sub_resource type="PlaneMesh" id="PlaneMesh_0c72v"]
+material = SubResource("StandardMaterial3D_spwur")
+size = Vector2(10000, 10000)
+
+[node name="PhysicalBattleEnvironment" type="Node3D"]
 
 [node name="CthonicClient" type="Node3D" parent="." node_paths=PackedStringArray("move_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.325)
@@ -38,14 +38,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8006, 0)
 billboard = 2
 texture = ExtResource("2_fwq7i")
 
-[node name="Fairy" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00966, 0, 0)
+[node name="Fairy" type="CharacterBody3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -2.00966, 0, 0)
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+motion_mode = 1
+wall_min_slide_angle = 3.14159
 script = ExtResource("4_1q45q")
+TOP_SPEED = 26
+HANDLING = 2.0
+boost_speed = 50.0
+BOOST_ENDLAG_START = 0.2
+BOOST_ENDLAG_END = 0.27
 
-[node name="CameraTarget" type="Node3D" parent="Fairy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.223214)
+[node name="Camera3D" type="Camera3D" parent="Fairy"]
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 6, 5)
+projection = 1
+current = true
+size = 20.0
 
 [node name="Sprite3D" type="Sprite3D" parent="Fairy"]
+offset = Vector2(0, 30)
 texture_filter = 0
 texture = ExtResource("6_f00lo")
 
@@ -56,11 +71,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.57154)
 environment = SubResource("Environment_xv67j")
 camera_attributes = SubResource("CameraAttributesPractical_0nsna")
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy_target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00966, 0, 0.223214)
-current = true
-script = ExtResource("2_8ghd0")
-fairy_target = NodePath("../Fairy/CameraTarget")
+[node name="ToothMech" type="Node3D" parent="."]
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("9_qi6yb")
+[node name="Sprite3D" type="Sprite3D" parent="ToothMech"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 17)
+offset = Vector2(0, 300)
+billboard = 2
+texture = ExtResource("6_wurj7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_0c72v")
