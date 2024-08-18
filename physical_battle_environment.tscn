@@ -1,17 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=12 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
+[ext_resource type="PackedScene" uid="uid://dus5x0oakqbsa" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
-[ext_resource type="Script" path="res://entity/tooth_mech.gd" id="3_mnq2a"]
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
-[ext_resource type="Texture2D" uid="uid://bby4s7uni1ry4" path="res://placeholder_mech.png" id="4_b3hy3"]
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
 [ext_resource type="Texture2D" uid="uid://b8tui20tpp506" path="res://placeholder_fairy.png" id="6_f00lo"]
 [ext_resource type="Script" path="res://mouse_capture_controller.gd" id="9_qi6yb"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uye72"]
-albedo_texture = ExtResource("4_b3hy3")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aqfvk"]
 panorama = ExtResource("4_x82jq")
@@ -29,6 +25,9 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="PhysicalBattleEnvironment" type="Node3D"]
 
+[node name="ToothMech" parent="." instance=ExtResource("1_6x8vs")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 34.3337)
+
 [node name="CthonicClient" type="Node3D" parent="." node_paths=PackedStringArray("move_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.325)
 script = ExtResource("1_0bep3")
@@ -39,19 +38,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8006, 0)
 billboard = 2
 texture = ExtResource("2_fwq7i")
 
-[node name="ToothMech" type="Node3D" parent="."]
-script = ExtResource("3_mnq2a")
-
-[node name="Sprite3D" type="Sprite3D" parent="ToothMech"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95572, 0)
-material_override = SubResource("StandardMaterial3D_uye72")
-billboard = 2
-texture = ExtResource("4_b3hy3")
-
-[node name="Fairy" type="Node3D" parent="." node_paths=PackedStringArray("tooth_mech")]
+[node name="Fairy" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00966, 0, 0)
 script = ExtResource("4_1q45q")
-tooth_mech = NodePath("../ToothMech")
 
 [node name="CameraTarget" type="Node3D" parent="Fairy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.223214)
