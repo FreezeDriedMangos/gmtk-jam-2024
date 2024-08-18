@@ -17,8 +17,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if fairy_mode:
-		self.position = fairy.position - fairy.velocity + Vector3(0, 0, height)
-		self.look_at(Vector3(fairy.position.x, fairy.position.y, 0), Vector3(0, 0, 1))
+		pass
+		#self.position = fairy.position - fairy.velocity + Vector3(0, 0, height)
+		#self.look_at(Vector3(fairy.position.x, fairy.position.y, 0), Vector3(0, 0, 1))
+		
 		#self.basis = Basis(Quaternion.from_euler(0, atan2(height, fairy.velocity.length())), fairy.velocity.angle())
 		
 		#self.origin = lerp(self.origin, fairy.global_transform.origin, delta*speed)

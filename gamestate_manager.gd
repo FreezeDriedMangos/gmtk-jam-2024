@@ -7,22 +7,22 @@ class_name GamestateManager extends Node
 @export var minor_horrors : Array[MinorHorror]
 
 func _ready():
-    return
+	return
 
 func register_entity(entity:Entity):
-    if(entity == null):
-        return
+	if(entity == null):
+		return
 
-    if(entity is CthonicClient):
-        cthonic_clients.append(entity)
-    elif(entity is MinorHorror):
-        minor_horrors.append(entity)
+	if(entity is CthonicClient):
+		cthonic_clients.append(entity)
+	elif(entity is MinorHorror):
+		minor_horrors.append(entity)
 
-    all_entities.append(entity)
+	all_entities.append(entity)
 
 func kill_entity(entity:Entity):
-    entity.queue_free()
+	entity.queue_free()
 
 
-    
-    
+	
+	
