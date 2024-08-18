@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
-[ext_resource type="PackedScene" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
+[ext_resource type="PackedScene" uid="uid://dus5x0oakqbsa" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
@@ -72,12 +72,13 @@ environment = SubResource("Environment_xv67j")
 camera_attributes = SubResource("CameraAttributesPractical_0nsna")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy_target", "fairy")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.00966, 17.5614, 0.991679)
-projection = 1
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.01, 120, 0.992)
 current = true
+fov = 10.0
 size = 11.476
 script = ExtResource("2_8ghd0")
 fairy_target = NodePath("../Fairy/CameraTarget")
+height = 120.0
 fairy = NodePath("../Fairy")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
