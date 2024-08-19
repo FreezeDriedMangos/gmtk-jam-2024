@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=20 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
 [ext_resource type="PackedScene" uid="uid://dus5x0oakqbsa" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
@@ -8,7 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
 [ext_resource type="Texture2D" uid="uid://b7iekoxtnlnn" path="res://sprites/antidentiphobia/tooth_fairy.png" id="6_7d4bd"]
 [ext_resource type="PackedScene" path="res://entity/minor_horror.tscn" id="6_erii8"]
+[ext_resource type="Script" path="res://boss_health.gd" id="7_ju4si"]
 [ext_resource type="Texture2D" uid="uid://prf5q5yt342t" path="res://temp_ground.png" id="8_tuuuo"]
+[ext_resource type="Texture2D" uid="uid://b7ug2m78i17cl" path="res://sprites/healthbar/placeholder_healthbar_under.png" id="10_ba8km"]
+[ext_resource type="Texture2D" uid="uid://dygnox3qi0ry5" path="res://sprites/healthbar/placeholder_healthbar_over.png" id="11_ghnya"]
+[ext_resource type="Texture2D" uid="uid://ca226kpk243oe" path="res://sprites/healthbar/placeholder_healthbar_bar.png" id="12_bsudg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
 
@@ -43,6 +47,35 @@ move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8006, 0)
 billboard = 2
 texture = ExtResource("2_fwq7i")
+
+[node name="HealthbarPosition" type="Node3D" parent="CthonicClient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CthonicClient"]
+
+[node name="BossHealth" type="MarginContainer" parent="CthonicClient/CanvasLayer" node_paths=PackedStringArray("client")]
+offset_right = 200.0
+offset_bottom = 35.0
+scale = Vector2(2, 2)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("7_ju4si")
+client = NodePath("../..")
+
+[node name="Bar" type="TextureProgressBar" parent="CthonicClient/CanvasLayer/BossHealth"]
+texture_filter = 1
+layout_mode = 2
+value = 80.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("10_ba8km")
+texture_over = ExtResource("11_ghnya")
+texture_progress = ExtResource("12_bsudg")
 
 [node name="Fairy" type="Node3D" parent="." node_paths=PackedStringArray("tooth_mech", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00966, 0, 0)
@@ -85,6 +118,7 @@ environment = SubResource("Environment_xv67j")
 camera_attributes = SubResource("CameraAttributesPractical_0nsna")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy_target", "fairy")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.01, 120, 0.992)
 current = true
 fov = 10.0
