@@ -15,7 +15,7 @@ var facing: float = 0
 
 var boosting = false
 
-var mouseScreenPos = Vector3()
+var mouseScreenPos = Vector2()
 
 func _ready() -> void:
 	super()
@@ -43,13 +43,13 @@ func raycast_from_mouse():
 	var ray_end = ray_start + camera.project_ray_normal(mouseScreenPos) * 1000
 	var world3d : World3D = get_world_3d()
 	var space_state = world3d.direct_space_state
-	
+
 	if space_state == null:
 		return
-	
+
 	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
 	query.collide_with_areas = true
-	
+
 	var result = space_state.intersect_ray(query)
 	return result["position"]
 
@@ -58,37 +58,37 @@ func _process(delta: float) -> void:
 	#
 	# determine desired movement direction
 	#
-	
+
 	var mouseWorldPos = raycast_from_mouse()
 	var mouseRelPos = mouseWorldPos - self.position
-	
+
 	var desired_dir = Vector3(mouseRelPos.x, 0, mouseRelPos.z)
-	
-	# 
+
+	#
 	# turn
 	#
-	
+
 	var desired_facing = atan2(desired_dir.x, desired_dir.z)
 	var max_facing_delta = abs(lerp_angle(facing, desired_facing, 1) - facing)
 	var facing_delta = lerp_angle(facing, desired_facing, max_turn_speed) - facing # (desired_facing - facing)*max_turn_speed
 	rotate_y(facing_delta)
 	facing = facing + facing_delta
-	
+
 	#
 	# move
 	#
-	
+
 	# move in current forwards direction, not directly towards mouse
 	var friction_scale = clamp(2* max_facing_delta / PI, 0, 1)
 	var friction = lerp(min_friction, max_friction, friction_scale)
 	friction = clampf(friction, 0, 1)
-	
+
 	var speed = boost_speed if boosting else base_move_speed
 	self.velocity = self.velocity*friction + (1-friction)*Vector3(sin(facing), 0, cos(facing))*speed
-		
-	
+
+
 	#
 	# update player position
 	#
-	
+
 	self.position += delta * self.velocity

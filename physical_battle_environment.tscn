@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
-[ext_resource type="PackedScene" uid="uid://8r5cmlci5ks5" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
+[ext_resource type="PackedScene" uid="uid://dus5x0oakqbsa" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
 [ext_resource type="Texture2D" uid="uid://b7iekoxtnlnn" path="res://sprites/antidentiphobia/tooth_fairy.png" id="6_7d4bd"]
-[ext_resource type="PackedScene" uid="uid://bmprv2bjcm8jq" path="res://entity/minor_horror.tscn" id="6_erii8"]
+[ext_resource type="PackedScene" path="res://entity/minor_horror.tscn" id="6_erii8"]
 [ext_resource type="Texture2D" uid="uid://prf5q5yt342t" path="res://temp_ground.png" id="8_tuuuo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
@@ -30,8 +30,9 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="PhysicalBattleEnvironment" type="Node3D"]
 
-[node name="ToothMech" parent="." instance=ExtResource("1_6x8vs")]
+[node name="ToothMech" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_6x8vs")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 34.3337)
+target = NodePath("../CthonicClient")
 
 [node name="CthonicClient" type="Node3D" parent="." node_paths=PackedStringArray("move_target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.325)

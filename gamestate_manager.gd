@@ -10,7 +10,7 @@ class_name GamestateManager extends Node
 @export var paused : bool
 @export var damage_tick_size_ms : int = 1000 #one second
 
-var last_damage_tick: int 
+var last_damage_tick: int
 
 func _ready():
 	last_damage_tick = Time.get_ticks_msec()
@@ -55,14 +55,14 @@ func _process(delta):
 		#print("Waiting for horrors to register...")
 		return
 
-	# update tick-based things like DPS -- this will be fine and 
+	# update tick-based things like DPS -- this will be fine and
 	## only execute once when the game unpauses (rather than damage accumulating over the pause period)
 	var damage_tick = false
 	var current_ms = Time.get_ticks_msec()
 	if current_ms - last_damage_tick > damage_tick_size_ms:
 		damage_tick = true
 		last_damage_tick = current_ms
-	
+
 	#handle "collisions"
 	var i = 0
 
@@ -74,7 +74,7 @@ func _process(delta):
 
 		if horror.position.distance_to(tooth_fairy.position) < (horror.radius + tooth_fairy.radius):
 			apply_damage(100, horror, tooth_fairy)
-		
+
 		if horror.position.distance_to(tooth_mech.position) < (horror.radius + tooth_mech.radius):
 			if !horror.latched:
 				horror.latch()
@@ -85,9 +85,3 @@ func _process(delta):
 		else:
 			if horror.latched:
 				horror.unlatch()
-
-
-
-
-
-	
