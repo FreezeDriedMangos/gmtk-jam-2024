@@ -15,9 +15,9 @@ var facing: float = 0
 
 @export var camera: Camera3D
 
-var boosting = true
+var boosting = false
 
-var mousePos_cameraRelative = Vector3()
+var mouseScreenPos = Vector3()
 
 func _ready() -> void:
 	super()
@@ -36,10 +36,27 @@ func _input(event):
 			boosting = event.pressed
 		#print("EVENT DETAILS %s %s " % [event.button_index, event.pressed])
 	elif event is InputEventMouseMotion:
-		#target_facing -= event.relative.x * turning_sensitivity
 		var rect = camera.get_viewport().size
-		var selfCameraRelative = (camera.position - self.position)
-		mousePos_cameraRelative = event.position - rect * 0.5 - Vector2(selfCameraRelative.x, selfCameraRelative.z)
+		mouseScreenPos = event.position
+
+
+func raycast_from_mouse():
+	var ray_start = camera.project_ray_origin(mouseScreenPos)
+	var ray_end = ray_start + camera.project_ray_normal(mouseScreenPos) * 1000
+	var world3d : World3D = get_world_3d()
+	var space_state = world3d.direct_space_state
+	
+	if space_state == null:
+		return
+	
+	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
+	query.collide_with_areas = true
+	
+	var result = space_state.intersect_ray(query)
+	return result["position"]
+
+
+var updateCount = 0
 
 func _process(delta: float) -> void:
 	#
@@ -62,41 +79,50 @@ func _process(delta: float) -> void:
 	#var ray = to - from
 	#var intersection = Vector3( )
 	
-	var intersection = Vector3(mousePos_cameraRelative.x, 0, mousePos_cameraRelative.y) + camera.position
+	# NOTE: this isn't an accurate world pos for the mouse
+	# TODO: make it accurate
+	# TODO: translate it by (player.pos - camera.pos)
+	#var mouseWorldPos = Vector3(mouseScreenPos_relativeToCenterOfScreen.x, 0, mouseScreenPos_relativeToCenterOfScreen.y) + camera.position
+	var mouseWorldPos = raycast_from_mouse()
 	
-	if intersection:
-		#intersection = intersection["position"]
-		#print("location %s" % intersection)
-		var desired_dir = Vector3(intersection.x, 0, intersection.z) - self.position
+	var mouseRelPos = mouseWorldPos - self.position
+	
+	updateCount += 1
+	if updateCount % 30 == 0:
+		print("------- rel, world  -------")
+		print(mouseRelPos)
+		print(mouseWorldPos)
+		updateCount = 0
+	
+	var desired_dir = Vector3(mouseRelPos.x, 0, mouseRelPos.z) #- self.position
+	
+	# 
+	# turn
+	#
+	
+	var desired_facing = atan2(desired_dir.x, desired_dir.z)
+	var max_facing_delta = abs(lerp_angle(facing, desired_facing, 1) - facing)
+	var facing_delta = lerp_angle(facing, desired_facing, max_turn_speed) - facing # (desired_facing - facing)*max_turn_speed
+	rotate_y(facing_delta)
+	facing = facing + facing_delta
+	
+	#
+	# move
+	#
+	
+	#move forward not towards mouse directly
+	
+	#print("%s %s %s %s" % [desired_facing, facing, facing_delta, max_facing_delta/PI]) # why does this get all the way up to 6
+	var friction_scale = clamp(2* max_facing_delta / PI, 0, 1) ** 2
+	var friction = lerp(min_friction, max_friction, friction_scale)
+	#self.velocity *= friction
+	#self.velocity += (1-friction) * desired_dir.normalized()*speed	
+	var speed = boost_speed if boosting else base_move_speed
+	self.velocity = self.velocity*friction + (1-friction)*Vector3(sin(facing), 0, cos(facing))*speed
 		
-		# 
-		# turn
-		#
-		
-		var desired_facing = atan2(desired_dir.x, desired_dir.z)
-		var max_facing_delta = abs(lerp_angle(facing, desired_facing, 1) - facing)
-		var facing_delta = lerp_angle(facing, desired_facing, max_turn_speed) - facing # (desired_facing - facing)*max_turn_speed
-		rotate_y(facing_delta)
-		facing = facing + facing_delta
-		
-		#
-		# move
-		#
-		
-		#move forward not towards mouse directly
-		
-		#print("%s %s %s %s" % [desired_facing, facing, facing_delta, max_facing_delta/PI]) # why does this get all the way up to 6
-		var friction_scale = clamp(2* max_facing_delta / PI, 0, 1) ** 2
-		var friction = lerp(min_friction, max_friction, friction_scale)
-		#self.velocity *= friction
-		#self.velocity += (1-friction) * desired_dir.normalized()*speed	
-		var speed = boost_speed if boosting else base_move_speed
-		self.velocity = self.velocity*friction + (1-friction)*Vector3(sin(facing), 0, cos(facing))*speed
-		
+	
+	#
+	# update player position
+	#
 	
 	self.position += delta * self.velocity
-	
-#	rotation lerps towards desired facing direction (towards mouse)
-#	velocity gets multiplied by 0.9 or so every frame, and 0.1*speed*desiredDir gets added every frame
-#	
-#	

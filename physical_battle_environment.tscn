@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=16 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
 [ext_resource type="PackedScene" uid="uid://8r5cmlci5ks5" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://prf5q5yt342t" path="res://temp_ground.png" id="8_tuuuo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u02b0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aqfvk"]
 panorama = ExtResource("4_x82jq")
@@ -61,6 +63,12 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.31733
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -5.22127, 0)
 shape = SubResource("BoxShape3D_21ui5")
 
+[node name="Area3D2" type="Area3D" parent="Fairy"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fairy/Area3D2"]
+shape = SubResource("BoxShape3D_u02b0")
+
 [node name="TEMPORARY_MONSTER_ATTRACTOR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.57154)
 
@@ -84,5 +92,6 @@ fairy = NodePath("../Fairy")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -1, 0)
+visible = false
 texture_filter = 0
 texture = ExtResource("8_tuuuo")

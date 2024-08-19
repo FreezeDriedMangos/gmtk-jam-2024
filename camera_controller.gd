@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		#var targetQuat = Quaternion(fairy_target.global_basis)
 		#self.basis = Basis(ownQuat.slerp(targetQuat, fairy_follow_rotation_speed))
 		
-		print(fairy.velocity)
+		#print(fairy.velocity)
 		self.position = fairy.position - 0.15*fairy.velocity + Vector3(0, height, 0)
 		#self.position.x = fairy.position.x
 		#self.position.z = fairy.position.z
