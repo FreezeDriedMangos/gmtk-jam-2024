@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmprv2bjcm8jq"]
+[gd_scene load_steps=17 format=3 uid="uid://cba5h1v4kswxb"]
 
 [ext_resource type="Script" path="res://entity/minor_horror.gd" id="1_drngm"]
 [ext_resource type="Texture2D" uid="uid://c3xup71ndptis" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_1.png" id="2_c4l82"]
@@ -70,8 +70,12 @@ animations = [{
 
 [node name="MinorHorror" type="Node3D" node_paths=PackedStringArray("mesh")]
 script = ExtResource("1_drngm")
+move_target = Vector3(0, 0, 0)
 mesh = NodePath("Mesh")
+drill_rads_sec_default = 20.0
+drill_rads_sec_latched = 160.0
 drill_rads_sec_current = 20.0
+rotate_vector = Vector3(0, 0, 1)
 base_move_speed = 22.0
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
