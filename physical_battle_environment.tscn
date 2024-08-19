@@ -92,6 +92,5 @@ fairy = NodePath("../Fairy")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -1, 0)
-visible = false
 texture_filter = 0
 texture = ExtResource("8_tuuuo")
