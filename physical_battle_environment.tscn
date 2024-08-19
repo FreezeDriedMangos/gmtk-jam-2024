@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
-[ext_resource type="PackedScene" uid="uid://dus5x0oakqbsa" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
+[ext_resource type="PackedScene" uid="uid://8r5cmlci5ks5" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
 [ext_resource type="Texture2D" uid="uid://b7iekoxtnlnn" path="res://sprites/antidentiphobia/tooth_fairy.png" id="6_7d4bd"]
-[ext_resource type="PackedScene" uid="uid://cba5h1v4kswxb" path="res://entity/minor_horror.tscn" id="6_erii8"]
+[ext_resource type="PackedScene" uid="uid://bmprv2bjcm8jq" path="res://entity/minor_horror.tscn" id="6_erii8"]
 [ext_resource type="Texture2D" uid="uid://prf5q5yt342t" path="res://temp_ground.png" id="8_tuuuo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
@@ -48,7 +48,7 @@ tooth_mech = NodePath("../ToothMech")
 camera = NodePath("../Camera3D")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Fairy"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.0534773)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0534773)
 texture_filter = 0
 texture = ExtResource("6_7d4bd")
 

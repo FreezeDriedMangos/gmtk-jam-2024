@@ -38,7 +38,8 @@ func _input(event):
 	elif event is InputEventMouseMotion:
 		#target_facing -= event.relative.x * turning_sensitivity
 		var rect = camera.get_viewport().size
-		mousePos_cameraRelative = event.position - rect * 0.5
+		var selfCameraRelative = (camera.position - self.position)
+		mousePos_cameraRelative = event.position - rect * 0.5 - Vector2(selfCameraRelative.x, selfCameraRelative.z)
 
 func _process(delta: float) -> void:
 	#
