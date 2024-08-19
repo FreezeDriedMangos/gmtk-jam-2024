@@ -54,7 +54,7 @@ func raycast_from_mouse():
 	return result["position"]
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	#
 	# determine desired movement direction
 	#

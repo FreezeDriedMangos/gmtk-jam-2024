@@ -47,7 +47,10 @@ texture = ExtResource("2_fwq7i")
 [node name="Fairy" type="Node3D" parent="." node_paths=PackedStringArray("tooth_mech", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00966, 0, 0)
 script = ExtResource("4_1q45q")
+boost_speed = 28.0
 tooth_mech = NodePath("../ToothMech")
+max_friction = 1.0
+min_friction = 0.95
 camera = NodePath("../Camera3D")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Fairy"]
