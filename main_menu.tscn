@@ -1,0 +1,159 @@
+[gd_scene load_steps=15 format=3 uid="uid://cw7vliy83iofa"]
+
+[ext_resource type="Script" path="res://main_menu_controller.gd" id="1_sxlmf"]
+[ext_resource type="Texture2D" uid="uid://r6hgfdcxxxit" path="res://sprites/default/menu/main_menu_no_selection.png" id="2_cm1fu"]
+[ext_resource type="Script" path="res://teeth_menu.gd" id="2_ia7rh"]
+[ext_resource type="Texture2D" uid="uid://bn5sj236khnsg" path="res://sprites/default/menu/main_menu_hover_left.png" id="3_ctkvu"]
+[ext_resource type="Texture2D" uid="uid://dm006qlm6o2xk" path="res://sprites/default/menu/main_menu_lowers.png" id="3_xaud6"]
+[ext_resource type="Texture2D" uid="uid://odjhw66w1jo0" path="res://sprites/default/menu/single_upper.png" id="4_2s0sg"]
+[ext_resource type="Texture2D" uid="uid://clrlb1johro7c" path="res://sprites/default/menu/main_menu_hover_right.png" id="4_u8air"]
+[ext_resource type="Texture2D" uid="uid://82t5sux4m82m" path="res://sprites/default/menu/main_menu_selection_made.png" id="5_6qoum"]
+[ext_resource type="FontFile" uid="uid://ndmr3rwyy1mj" path="res://fonts/vintage-propagandist/Vintage Propagandist.ttf" id="6_p161m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_24e38"]
+font = ExtResource("6_p161m")
+font_size = 32
+font_color = Color(1, 1, 1, 0.698039)
+outline_size = 3
+outline_color = Color(1, 1, 1, 0.698039)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jeem1"]
+font = ExtResource("6_p161m")
+font_size = 60
+outline_size = 5
+
+[sub_resource type="Gradient" id="Gradient_55eux"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ni7ej"]
+gradient = SubResource("Gradient_55eux")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xv2e4"]
+font = ExtResource("6_p161m")
+font_color = Color(1, 1, 1, 0.431373)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuController" type="Node" parent="." node_paths=PackedStringArray("sprite_none_selected", "sprite_left_selected", "sprite_right_selected", "sprite_left_clicked")]
+script = ExtResource("1_sxlmf")
+sprite_none_selected = NodePath("../TeethMenu/TeethUpper/NoSelection")
+sprite_left_selected = NodePath("../TeethMenu/TeethUpper/HoverLeft")
+sprite_right_selected = NodePath("../TeethMenu/TeethUpper/HoverRight")
+sprite_left_clicked = NodePath("../TeethMenu/TeethUpper/LeftClicked")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TeethMenu" type="Node2D" parent="." node_paths=PackedStringArray("uppers", "lowers")]
+unique_name_in_owner = true
+script = ExtResource("2_ia7rh")
+uppers = NodePath("TeethUpper")
+lowers = NodePath("TeethLower")
+
+[node name="TeethUpper" type="Node2D" parent="TeethMenu"]
+
+[node name="NoSelection" type="Sprite2D" parent="TeethMenu/TeethUpper"]
+scale = Vector2(15, 15)
+texture = ExtResource("2_cm1fu")
+
+[node name="HoverLeft" type="Sprite2D" parent="TeethMenu/TeethUpper"]
+visible = false
+scale = Vector2(15, 15)
+texture = ExtResource("3_ctkvu")
+
+[node name="HoverRight" type="Sprite2D" parent="TeethMenu/TeethUpper"]
+visible = false
+scale = Vector2(15, 15)
+texture = ExtResource("4_u8air")
+
+[node name="LeftClicked" type="Sprite2D" parent="TeethMenu/TeethUpper"]
+visible = false
+scale = Vector2(15, 15)
+texture = ExtResource("5_6qoum")
+
+[node name="QueasyModeLabel" type="Label" parent="TeethMenu/TeethUpper"]
+offset_left = 209.0
+offset_top = -225.0
+offset_right = 482.0
+offset_bottom = -188.0
+rotation = -0.209779
+text = "Enable Queasy Mode"
+label_settings = SubResource("LabelSettings_24e38")
+vertical_alignment = 1
+
+[node name="QueasyModeLabel3" type="Label" parent="TeethMenu/TeethUpper"]
+offset_left = -210.0
+offset_top = -315.0
+offset_right = 209.0
+offset_bottom = -255.0
+text = "DENTIPHOBIA"
+label_settings = SubResource("LabelSettings_jeem1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueasyModeLabel2" type="Label" parent="TeethMenu/TeethUpper"]
+offset_left = -531.0
+offset_top = -289.0
+offset_right = -193.0
+offset_bottom = -252.0
+rotation = 0.20944
+text = "Begin Game"
+label_settings = SubResource("LabelSettings_24e38")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TeethLower" type="Node2D" parent="TeethMenu"]
+
+[node name="Sprite2D" type="Sprite2D" parent="TeethMenu/TeethLower"]
+z_index = -1
+scale = Vector2(15, 15)
+texture = ExtResource("3_xaud6")
+
+[node name="ToggleQueasyMode" type="Button" parent="TeethMenu"]
+z_index = -100
+offset_left = 1.99988
+offset_top = -221.0
+offset_right = 119.0
+offset_bottom = -190.0
+scale = Vector2(2.02794, 10.823)
+icon = ExtResource("4_2s0sg")
+icon_alignment = 1
+expand_icon = true
+
+[node name="StartGameButton" type="Button" parent="TeethMenu"]
+z_index = -100
+offset_left = -237.0
+offset_top = -219.0
+offset_right = -120.0
+offset_bottom = -188.0
+scale = Vector2(2.02794, 10.823)
+icon = ExtResource("4_2s0sg")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TeethMenu"]
+z_index = -10
+scale = Vector2(4.7307, 719.914)
+texture = SubResource("GradientTexture1D_ni7ej")
+
+[node name="Attributions" type="Label" parent="TeethMenu"]
+offset_left = -565.0
+offset_top = 278.0
+offset_right = -227.0
+offset_bottom = 315.0
+text = "Game by the Dentiphobia Team  -  Font by Loki Gwynbleidd on Font Library "
+label_settings = SubResource("LabelSettings_xv2e4")
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="TeethMenu/ToggleQueasyMode" to="MainMenuController" method="hover_right"]
+[connection signal="mouse_exited" from="TeethMenu/ToggleQueasyMode" to="MainMenuController" method="unhover_right"]
+[connection signal="pressed" from="TeethMenu/ToggleQueasyMode" to="MainMenuController" method="toggle_queasy"]
+[connection signal="mouse_entered" from="TeethMenu/StartGameButton" to="MainMenuController" method="hover_left"]
+[connection signal="mouse_exited" from="TeethMenu/StartGameButton" to="MainMenuController" method="unhover_left"]
+[connection signal="pressed" from="TeethMenu/StartGameButton" to="MainMenuController" method="start_game"]

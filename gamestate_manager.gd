@@ -17,6 +17,13 @@ var despawn_array:Array[Entity]
 var last_damage_tick: int
 var last_horror_spawn_tick: int
 
+
+@export var queasy_mode_enabled: bool = false:
+	set(value):
+		for entity in self.all_entities:
+			entity.set_queasy(value)
+
+
 func _ready():
 	last_damage_tick = Time.get_ticks_msec()
 	return

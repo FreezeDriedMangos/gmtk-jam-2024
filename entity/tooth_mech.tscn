@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dus5x0oakqbsa"]
+[gd_scene load_steps=5 format=3 uid="uid://8r5cmlci5ks5"]
 
 [ext_resource type="Script" path="res://entity/tooth_mech.gd" id="1_tljki"]
 [ext_resource type="PackedScene" uid="uid://dmkfydsnbq5i1" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
