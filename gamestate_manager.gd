@@ -31,7 +31,9 @@ func _ready():
 func register_entity(entity:Entity):
 	if(entity == null):
 		return
-
+	
+	entity.set_queasy(queasy_mode_enabled)
+	
 	if(entity is CthonicClient):
 		cthonic_clients.append(entity)
 	elif(entity is MinorHorror):

@@ -16,8 +16,7 @@
 height = 12.4368
 radius = 3.88676
 
-[node name="CthonicClient" type="Node3D" node_paths=PackedStringArray("default_sprite", "queasy_sprite")]
-[node name="CthonicClient" type="Node3D" node_paths=PackedStringArray("throat")]
+[node name="CthonicClient" type="Node3D" node_paths=PackedStringArray("default_sprite", "queasy_sprite", "throat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.325)
 script = ExtResource("1_ll0ic")
 default_sprite = NodePath("RegularSprites")

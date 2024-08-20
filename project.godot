@@ -23,6 +23,10 @@ GamestateManagerGlobal="*res://gamestate_manager.gd"
 
 shapes/navigation/geometry_edge_color=Color(0, 0.898128, 0.826567, 1)
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 up={
