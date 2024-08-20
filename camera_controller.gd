@@ -36,6 +36,11 @@ func _input(event):
 				followed_tooth_fairy.boosting = event.pressed
 			elif event.button_index == 2:
 				followed_tooth_fairy.firing = event.pressed
+		elif event is InputEventKey:
+			print(event.as_text())
+			if event.as_text() == 'Space' && event.pressed:
+				followed_entity = GamestateManagerGlobal.tooth_mech
+				event.pressed = false
 
 
 	elif followed_entity is ToothMech:
@@ -44,6 +49,9 @@ func _input(event):
 			print(event.as_text())
 			if event.as_text() == 'W':
 				followed_tooth_mech.walking = event.pressed
+			elif event.as_text() == 'Space' && event.pressed:
+				followed_entity = GamestateManagerGlobal.tooth_fairy
+				event.pressed = false
 
 	# handle player input to the mech
 
