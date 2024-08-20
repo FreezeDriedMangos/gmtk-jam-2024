@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cw7vliy83iofa"]
+[gd_scene load_steps=20 format=3 uid="uid://cw7vliy83iofa"]
 
 [ext_resource type="Script" path="res://main_menu_controller.gd" id="1_sxlmf"]
 [ext_resource type="Texture2D" uid="uid://r6hgfdcxxxit" path="res://sprites/default/menu/main_menu_no_selection.png" id="2_cm1fu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://clrlb1johro7c" path="res://sprites/default/menu/main_menu_hover_right.png" id="4_u8air"]
 [ext_resource type="Texture2D" uid="uid://82t5sux4m82m" path="res://sprites/default/menu/main_menu_selection_made.png" id="5_6qoum"]
 [ext_resource type="FontFile" uid="uid://ndmr3rwyy1mj" path="res://fonts/vintage-propagandist/Vintage Propagandist.ttf" id="6_p161m"]
+[ext_resource type="Texture2D" uid="uid://lmo60abufe7d" path="res://sprites/blurred_main_menu.png" id="10_5h51t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_24e38"]
 font = ExtResource("6_p161m")
@@ -32,6 +33,20 @@ gradient = SubResource("Gradient_55eux")
 [sub_resource type="LabelSettings" id="LabelSettings_xv2e4"]
 font = ExtResource("6_p161m")
 font_color = Color(1, 1, 1, 0.431373)
+
+[sub_resource type="Gradient" id="Gradient_q2wpw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.096, 0.12, 0.24, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4bym0"]
+gradient = SubResource("Gradient_q2wpw")
+
+[sub_resource type="Gradient" id="Gradient_re5vv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.228, 0.285, 0.57, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6puxr"]
+gradient = SubResource("Gradient_re5vv")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -87,7 +102,7 @@ text = "Enable Queasy Mode"
 label_settings = SubResource("LabelSettings_24e38")
 vertical_alignment = 1
 
-[node name="QueasyModeLabel3" type="Label" parent="TeethMenu/TeethUpper"]
+[node name="Title" type="Label" parent="TeethMenu/TeethUpper"]
 offset_left = -210.0
 offset_top = -315.0
 offset_right = 209.0
@@ -97,7 +112,7 @@ label_settings = SubResource("LabelSettings_jeem1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QueasyModeLabel2" type="Label" parent="TeethMenu/TeethUpper"]
+[node name="BeginGameLabel" type="Label" parent="TeethMenu/TeethUpper"]
 offset_left = -531.0
 offset_top = -289.0
 offset_right = -193.0
@@ -137,7 +152,7 @@ icon = ExtResource("4_2s0sg")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Sprite2D" type="Sprite2D" parent="TeethMenu"]
+[node name="Background" type="Sprite2D" parent="TeethMenu"]
 z_index = -10
 scale = Vector2(4.7307, 719.914)
 texture = SubResource("GradientTexture1D_ni7ej")
@@ -151,9 +166,130 @@ text = "Game by the Dentiphobia Team  -  Font by Loki Gwynbleidd on Font Library
 label_settings = SubResource("LabelSettings_xv2e4")
 vertical_alignment = 1
 
+[node name="QueasyMenu" type="Node2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Background2" type="Sprite2D" parent="QueasyMenu"]
+z_index = -10
+scale = Vector2(4.7307, 719.914)
+texture = SubResource("GradientTexture1D_ni7ej")
+
+[node name="Title2" type="Label" parent="QueasyMenu"]
+offset_left = -204.0
+offset_top = -138.0
+offset_right = 215.0
+offset_bottom = -78.0
+text = "DENTIPHOBIA"
+label_settings = SubResource("LabelSettings_jeem1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QueasyModeDisableButton" type="Button" parent="QueasyMenu"]
+offset_left = -176.0
+offset_top = 165.0
+offset_right = 111.0
+offset_bottom = 197.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_p161m")
+theme_override_font_sizes/font_size = 23
+text = "   Disable Queasy Mode   "
+
+[node name="StartGameButton" type="Button" parent="QueasyMenu"]
+offset_left = -152.0
+offset_top = 65.0
+offset_right = 92.0
+offset_bottom = 108.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_p161m")
+theme_override_font_sizes/font_size = 34
+text = "   Start Game   "
+
+[node name="QueasyModal" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="QueasyModeEnableButton" type="Button" parent="QueasyModal"]
+z_index = 15
+offset_left = -176.0
+offset_top = 165.0
+offset_right = 111.0
+offset_bottom = 197.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_p161m")
+theme_override_font_sizes/font_size = 23
+text = "   Enable Queasy Mode   "
+
+[node name="ContinueButton" type="Button" parent="QueasyModal"]
+z_index = 15
+offset_left = -92.0
+offset_top = 245.0
+offset_right = 48.0
+offset_bottom = 277.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("6_p161m")
+theme_override_font_sizes/font_size = 23
+text = "   Continue   "
+
+[node name="BackgroundBackground" type="Sprite2D" parent="QueasyModal"]
+z_index = 10
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("10_5h51t")
+
+[node name="Warning" type="Label" parent="QueasyModal"]
+z_index = 15
+offset_left = -204.0
+offset_top = -244.0
+offset_right = 215.0
+offset_bottom = -184.0
+text = "Attention"
+label_settings = SubResource("LabelSettings_jeem1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="QueasyModal"]
+z_index = 15
+offset_left = -602.0
+offset_top = -161.0
+offset_right = 602.0
+offset_bottom = 11.0
+text = "Queasy?
+The game uses dental imagery 
+and body horror elements. 
+
+If this doesn't work for you, use the button 
+below to enable queasy mode sprites.
+
+Otherwise, continue with original sprites."
+label_settings = SubResource("LabelSettings_24e38")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModalBackground" type="Sprite2D" parent="QueasyModal"]
+z_index = 12
+scale = Vector2(12, 10)
+texture = SubResource("GradientTexture2D_4bym0")
+
+[node name="ModalBackground2" type="Sprite2D" parent="QueasyModal"]
+z_index = 13
+scale = Vector2(11.5, 9.584)
+texture = SubResource("GradientTexture2D_6puxr")
+
 [connection signal="mouse_entered" from="TeethMenu/ToggleQueasyMode" to="MainMenuController" method="hover_right"]
 [connection signal="mouse_exited" from="TeethMenu/ToggleQueasyMode" to="MainMenuController" method="unhover_right"]
 [connection signal="pressed" from="TeethMenu/ToggleQueasyMode" to="MainMenuController" method="toggle_queasy"]
 [connection signal="mouse_entered" from="TeethMenu/StartGameButton" to="MainMenuController" method="hover_left"]
 [connection signal="mouse_exited" from="TeethMenu/StartGameButton" to="MainMenuController" method="unhover_left"]
 [connection signal="pressed" from="TeethMenu/StartGameButton" to="MainMenuController" method="start_game"]
+[connection signal="pressed" from="QueasyMenu/QueasyModeDisableButton" to="MainMenuController" method="toggle_queasy"]
+[connection signal="pressed" from="QueasyMenu/StartGameButton" to="MainMenuController" method="start_game"]
+[connection signal="pressed" from="QueasyModal/QueasyModeEnableButton" to="MainMenuController" method="close_modal"]
+[connection signal="pressed" from="QueasyModal/QueasyModeEnableButton" to="MainMenuController" method="toggle_queasy"]
+[connection signal="pressed" from="QueasyModal/ContinueButton" to="MainMenuController" method="close_modal"]
