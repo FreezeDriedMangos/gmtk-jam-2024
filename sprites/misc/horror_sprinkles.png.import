@@ -2,28 +2,28 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c52wt85a8locy"
-path="res://.godot/imported/tooth_fairy_skullbike.png-58214c8808bdcaae319c58103d1c75ed.ctex"
+uid="uid://crlmxcokr1ff4"
+path="res://.godot/imported/horror_sprinkles.png-d1127ce79173dab7f4d40bf60dbf6183.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/default/tooth_fairy_skullbike.png"
-dest_files=["res://.godot/imported/tooth_fairy_skullbike.png-58214c8808bdcaae319c58103d1c75ed.ctex"]
+source_file="res://sprites/misc/horror_sprinkles.png"
+dest_files=["res://.godot/imported/horror_sprinkles.png-d1127ce79173dab7f4d40bf60dbf6183.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

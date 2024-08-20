@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqn1n725aiue0"
-path="res://.godot/imported/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png-a00f1418fc37e2407d6a6f7f3038c3d4.ctex"
+uid="uid://b7ug2m78i17cl"
+path="res://.godot/imported/placeholder_healthbar_under.png-4af308067d42aa91821d3a4af64183cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/default/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png"
-dest_files=["res://.godot/imported/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png-a00f1418fc37e2407d6a6f7f3038c3d4.ctex"]
+source_file="res://sprites/misc/healthbar/placeholder_healthbar_under.png"
+dest_files=["res://.godot/imported/placeholder_healthbar_under.png-4af308067d42aa91821d3a4af64183cf.ctex"]
 
 [params]
 

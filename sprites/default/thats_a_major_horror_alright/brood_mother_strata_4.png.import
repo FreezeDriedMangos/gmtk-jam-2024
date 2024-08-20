@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqn1n725aiue0"
-path="res://.godot/imported/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png-a00f1418fc37e2407d6a6f7f3038c3d4.ctex"
+uid="uid://caxcbokrk1d3"
+path="res://.godot/imported/brood_mother_strata_4.png-e4ad411751d4265b143b96cdcbba4380.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/default/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png"
-dest_files=["res://.godot/imported/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png-a00f1418fc37e2407d6a6f7f3038c3d4.ctex"]
+source_file="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_4.png"
+dest_files=["res://.godot/imported/brood_mother_strata_4.png-e4ad411751d4265b143b96cdcbba4380.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

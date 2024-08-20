@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqn1n725aiue0"
-path="res://.godot/imported/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png-a00f1418fc37e2407d6a6f7f3038c3d4.ctex"
+uid="uid://wrgqou42nh21"
+path="res://.godot/imported/brood_mother_strata_combined.png-68c118ea9a733754b07606b87b00f168.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/default/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png"
-dest_files=["res://.godot/imported/tooth_fairy_skullbike_LARGE_AND_SHARABLE.png-a00f1418fc37e2407d6a6f7f3038c3d4.ctex"]
+source_file="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_combined.png"
+dest_files=["res://.godot/imported/brood_mother_strata_combined.png-68c118ea9a733754b07606b87b00f168.ctex"]
 
 [params]
 

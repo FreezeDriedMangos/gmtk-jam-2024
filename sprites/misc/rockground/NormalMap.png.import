@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dygnox3qi0ry5"
-path="res://.godot/imported/placeholder_healthbar_over.png-5b6c791c4dfef791be235c6655be1fa6.ctex"
+uid="uid://drxil67xer02v"
+path="res://.godot/imported/NormalMap.png-de04adfb306819137a7532e86b98353d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/healthbar/placeholder_healthbar_over.png"
-dest_files=["res://.godot/imported/placeholder_healthbar_over.png-5b6c791c4dfef791be235c6655be1fa6.ctex"]
+source_file="res://sprites/misc/rockground/NormalMap.png"
+dest_files=["res://.godot/imported/NormalMap.png-de04adfb306819137a7532e86b98353d.ctex"]
 
 [params]
 

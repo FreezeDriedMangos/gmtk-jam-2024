@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca226kpk243oe"
-path="res://.godot/imported/placeholder_healthbar_bar.png-820b27db7e0d3cbdd336bd3b49970686.ctex"
+uid="uid://n6nsdiyde3aq"
+path="res://.godot/imported/AmbientOcclusionMap(1).png-b53a098a989171d2e92f8e7ab94a6495.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/healthbar/placeholder_healthbar_bar.png"
-dest_files=["res://.godot/imported/placeholder_healthbar_bar.png-820b27db7e0d3cbdd336bd3b49970686.ctex"]
+source_file="res://sprites/misc/rockground/AmbientOcclusionMap(1).png"
+dest_files=["res://.godot/imported/AmbientOcclusionMap(1).png-b53a098a989171d2e92f8e7ab94a6495.ctex"]
 
 [params]
 
