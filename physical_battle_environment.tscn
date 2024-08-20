@@ -1,22 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=14 format=3 uid="uid://dr8lsooa8abcl"]
 
-[ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_0bep3"]
 [ext_resource type="PackedScene" uid="uid://dus5x0oakqbsa" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
-[ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_fwq7i"]
-[ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="4_1q45q"]
+[ext_resource type="PackedScene" uid="uid://bivatufcg6odm" path="res://entity/cthonic_client.tscn" id="2_ndhfw"]
+[ext_resource type="PackedScene" uid="uid://b5gciopklwjbo" path="res://entity/tooth_fairy.tscn" id="3_pbh6t"]
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
-[ext_resource type="Texture2D" uid="uid://b7iekoxtnlnn" path="res://sprites/antidentiphobia/tooth_fairy.png" id="6_7d4bd"]
-[ext_resource type="PackedScene" path="res://entity/minor_horror.tscn" id="6_erii8"]
-[ext_resource type="Script" path="res://boss_health.gd" id="7_ju4si"]
+[ext_resource type="PackedScene" uid="uid://cba5h1v4kswxb" path="res://entity/minor_horror.tscn" id="6_erii8"]
+[ext_resource type="Script" path="res://horror_spawner.gd" id="8_1od3q"]
 [ext_resource type="Texture2D" uid="uid://prf5q5yt342t" path="res://temp_ground.png" id="8_tuuuo"]
-[ext_resource type="Texture2D" uid="uid://b7ug2m78i17cl" path="res://sprites/healthbar/placeholder_healthbar_under.png" id="10_ba8km"]
-[ext_resource type="Texture2D" uid="uid://dygnox3qi0ry5" path="res://sprites/healthbar/placeholder_healthbar_over.png" id="11_ghnya"]
-[ext_resource type="Texture2D" uid="uid://ca226kpk243oe" path="res://sprites/healthbar/placeholder_healthbar_bar.png" id="12_bsudg"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_u02b0"]
+[ext_resource type="PackedScene" uid="uid://cwjixlpvkbt42" path="res://entity/coin_projectile.tscn" id="8_xu5du"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aqfvk"]
 panorama = ExtResource("4_x82jq")
@@ -38,93 +30,51 @@ ambient_light_color = Color(1, 1, 1, 1)
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 34.3337)
 target = NodePath("../CthonicClient")
 
-[node name="CthonicClient" type="Node3D" parent="." node_paths=PackedStringArray("move_target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.325)
-script = ExtResource("1_0bep3")
+[node name="CthonicClient" parent="." node_paths=PackedStringArray("camera_that_wont_leave_like_dad", "move_target") instance=ExtResource("2_ndhfw")]
+camera_that_wont_leave_like_dad = NodePath("../Camera3D")
 move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 
-[node name="Sprite3D" type="Sprite3D" parent="CthonicClient"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8006, 0)
-billboard = 2
-texture = ExtResource("2_fwq7i")
-
-[node name="HealthbarPosition" type="Node3D" parent="CthonicClient"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -2)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="CthonicClient"]
-
-[node name="BossHealth" type="MarginContainer" parent="CthonicClient/CanvasLayer" node_paths=PackedStringArray("client")]
-offset_right = 200.0
-offset_bottom = 35.0
-scale = Vector2(2, 2)
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-script = ExtResource("7_ju4si")
-client = NodePath("../..")
-
-[node name="Bar" type="TextureProgressBar" parent="CthonicClient/CanvasLayer/BossHealth"]
-texture_filter = 1
-layout_mode = 2
-value = 80.0
-nine_patch_stretch = true
-stretch_margin_left = 4
-stretch_margin_top = 4
-stretch_margin_right = 4
-stretch_margin_bottom = 4
-texture_under = ExtResource("10_ba8km")
-texture_over = ExtResource("11_ghnya")
-texture_progress = ExtResource("12_bsudg")
-
-[node name="Fairy" type="Node3D" parent="." node_paths=PackedStringArray("tooth_mech", "camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00966, 0, 0)
-script = ExtResource("4_1q45q")
-boost_speed = 28.0
-tooth_mech = NodePath("../ToothMech")
-max_friction = 1.0
-min_friction = 0.95
+[node name="Fairy" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_pbh6t")]
 camera = NodePath("../Camera3D")
-
-[node name="Sprite3D2" type="Sprite3D" parent="Fairy"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0534773)
-texture_filter = 0
-texture = ExtResource("6_7d4bd")
-
-[node name="CameraTarget" type="Node3D" parent="Fairy"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.31733, 0.66548)
-
-[node name="Area3D" type="Area3D" parent="Fairy"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fairy/Area3D"]
-transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -5.22127, 0)
-shape = SubResource("BoxShape3D_21ui5")
-
-[node name="Area3D2" type="Area3D" parent="Fairy"]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, -0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fairy/Area3D2"]
-shape = SubResource("BoxShape3D_u02b0")
 
 [node name="TEMPORARY_MONSTER_ATTRACTOR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.57154)
 
 [node name="MinorHorror" parent="." instance=ExtResource("6_erii8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+latched = false
+drill_rads_sec_default = 80.0
+drill_rads_sec_latched = 460.0
+drill_rads_sec_current = 80.0
+health = 0
+
+[node name="MinorHorror2" parent="." instance=ExtResource("6_erii8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -19.7673)
+latched = false
+drill_rads_sec_default = 80.0
+drill_rads_sec_latched = 460.0
+drill_rads_sec_current = 80.0
+health = 0
+
+[node name="MinorHorror3" parent="." instance=ExtResource("6_erii8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8747, 0, -19.7673)
+latched = false
+drill_rads_sec_default = 80.0
+drill_rads_sec_latched = 460.0
+drill_rads_sec_current = 80.0
 health = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xv67j")
 camera_attributes = SubResource("CameraAttributesPractical_0nsna")
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy_target", "fairy")]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.01, 120, 0.992)
 current = true
-fov = 3.0
+fov = 5.0
 size = 11.476
 script = ExtResource("2_8ghd0")
-fairy_target = NodePath("../Fairy/CameraTarget")
 height = 120.0
 fairy = NodePath("../Fairy")
 
@@ -132,3 +82,8 @@ fairy = NodePath("../Fairy")
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, -1, 0)
 texture_filter = 0
 texture = ExtResource("8_tuuuo")
+
+[node name="HorrorSpawner" type="Node3D" parent="."]
+script = ExtResource("8_1od3q")
+
+[node name="CoinProjectile" parent="." instance=ExtResource("8_xu5du")]
