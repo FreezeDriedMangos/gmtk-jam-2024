@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4pdybyqpfal3"]
+[gd_scene load_steps=6 format=3 uid="uid://4pdybyqpfal3"]
 
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="1_lwayr"]
 [ext_resource type="Texture2D" uid="uid://c52wt85a8locy" path="res://sprites/default/tooth_fairy_skullbike.png" id="2_tito4"]
@@ -7,18 +7,13 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_u02b0"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_tfoms"]
-size = Vector3(0.487854, 2.06177, 1)
-
-[node name="Fairy" type="Node3D" node_paths=PackedStringArray("gun_sound", "collider_area", "default_sprite", "queasy_sprite")]
+[node name="Fairy" type="CharacterBody3D" node_paths=PackedStringArray("gun_sound", "collider_area", "default_sprite", "queasy_sprite")]
 script = ExtResource("1_lwayr")
 boost_speed = 28.0
 max_friction = 1.0
 min_friction = 0.95
 gun_sound = NodePath("CoinGunSound")
-collider_area = NodePath("Area3D3")
+collider_area = NodePath("")
 default_sprite = NodePath("RegularSprites")
 queasy_sprite = NodePath("QueasySprites")
 
@@ -28,23 +23,13 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.31733
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, -5.22127, 0)
 shape = SubResource("BoxShape3D_21ui5")
 
-[node name="Area3D2" type="Area3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, -0.5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
-shape = SubResource("BoxShape3D_u02b0")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_21ui5")
 
 [node name="CoinGunSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_emq8k")
-
-[node name="Area3D3" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00131226, -0.463013, 0)
-shape = SubResource("BoxShape3D_tfoms")
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(-1, -1.77636e-15, 8.74228e-08, 1.86729e-08, 0.976923, 0.213593, -8.54053e-08, 0.213593, -0.976923, -0.181425, 0.046752, 0.24535)
@@ -74,3 +59,5 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0534773)
 texture_filter = 0
 texture = ExtResource("4_iaram")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

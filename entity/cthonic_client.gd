@@ -12,3 +12,8 @@ func _process(delta: float) -> void:
 	if move_target:
 		var dir = move_target.position - self.position
 		self.position += dir.normalized() * base_move_speed * delta
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is ToothFairy or body is ToothMech:
+		GamestateManagerGlobal.apply_damage(100, body, self)

@@ -3,7 +3,6 @@ class_name WadProjectile extends Entity
 @onready var body:Node3D = $Body
 
 var speed:float = 12.0
-var velocity:Vector3 = Vector3.FORWARD*speed
 var damage:int = 1000.0
 var spin:Vector3 = Vector3(randf_range(-2.0, 2.0), randf_range(-2.0, 2.0), randf_range(-2.0, 2.0))*1.0
 var time_to_live_ms:float = 1000.0
@@ -11,6 +10,7 @@ var time_spawned_s:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	velocity = Vector3.FORWARD*speed
 	time_spawned_s = Time.get_unix_time_from_system()
 	pass # Replace with function body.
 
@@ -23,3 +23,8 @@ func _process(delta):
 
 	body.rotation += spin*delta
 	position += velocity*delta
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is CthonicClient:
+		GamestateManagerGlobal.apply_damage(1000, body, self)

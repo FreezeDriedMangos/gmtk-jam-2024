@@ -22,11 +22,11 @@ var last_horror_spawn_tick: int
 	set(value):
 		for entity in self.all_entities:
 			entity.set_queasy(value)
-		
+
 		if get_tree().current_scene.get_node('%RegularToothCountSprite') != null:
 			get_tree().current_scene.get_node('%RegularToothCountSprite').set_visible(not value)
 			get_tree().current_scene.get_node('%QueasyToothCountSprite').set_visible(value)
-	
+
 
 func _ready():
 	last_damage_tick = Time.get_ticks_msec()
@@ -36,16 +36,16 @@ var first_register = true
 func register_entity(entity:Entity):
 	if(entity == null):
 		return
-	
+
 	if first_register:
 		print("first register")
 		first_register = false
 		get_tree().current_scene.get_node('%RegularToothCountSprite').set_visible(not queasy_mode_enabled)
 		get_tree().current_scene.get_node('%QueasyToothCountSprite').set_visible(queasy_mode_enabled)
 		print(get_tree().current_scene.get_node('%RegularToothCountSprite').name)
-	
+
 	entity.set_queasy(queasy_mode_enabled)
-	
+
 	if(entity is CthonicClient):
 		cthonic_clients.append(entity)
 	elif(entity is MinorHorror):
@@ -56,9 +56,14 @@ func register_entity(entity:Entity):
 		tooth_mech = entity
 	elif(entity is CoinProjectile):
 		coin_projectiles.append(entity)
-		
+
 
 	all_entities.append(entity)
+
+func remove_entity(entity:Entity):
+	all_entities.erase(entity)
+	entity.queue_free()
+	despawn_array.append(entity)
 
 func kill_entity(entity:Entity, killer:Entity):
 	if(entity is CthonicClient):
@@ -67,17 +72,15 @@ func kill_entity(entity:Entity, killer:Entity):
 		if(killer is ToothFairy):
 			killer.teeth += 1
 		minor_horrors.erase(entity)
+		remove_entity(entity)
 	elif(entity is ToothFairy):
 		end_game(false)
 	elif(entity is ToothMech):
 		end_game(false)
 	elif(entity is CoinProjectile):
 		coin_projectiles.erase(entity)
-	all_entities.erase(entity)
+		remove_entity(entity)
 
-	entity.queue_free()
-
-	despawn_array.append(entity)
 
 func apply_damage(damage:int, hit_entity:Entity, attacker:Entity):
 	#slightly opaque: take_damage applies damage and returns 'true' if the entity dies as a result
@@ -104,7 +107,7 @@ func _process(delta):
 
 	var spawn_tick:bool = false
 
-	
+
 
 	# update tick-based things like DPS -- this will be fine and
 	## only execute once when the game unpauses (rather than damage accumulating over the pause period)
@@ -128,7 +131,7 @@ func _process(delta):
 
 		if horror.position.distance_to(tooth_fairy.position) < (horror.radius + tooth_fairy.radius):
 			apply_damage(100, horror, tooth_fairy)
-		
+
 
 		if horror.position.distance_to(tooth_mech.position) < (horror.radius + tooth_mech.radius):
 			if !horror.latched:
@@ -142,4 +145,3 @@ func _process(delta):
 
 func end_game(win:bool = false):
 	return
-	

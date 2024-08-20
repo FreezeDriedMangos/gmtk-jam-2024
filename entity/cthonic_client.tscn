@@ -16,7 +16,7 @@
 height = 12.4368
 radius = 3.88676
 
-[node name="CthonicClient" type="Node3D" node_paths=PackedStringArray("throat", "default_sprite", "queasy_sprite")]
+[node name="CthonicClient" type="CharacterBody3D" node_paths=PackedStringArray("throat", "default_sprite", "queasy_sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.325)
 script = ExtResource("1_ll0ic")
 throat = NodePath("AudioStreamPlayer3D")
@@ -28,6 +28,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.8
 visible = false
 render_priority = 1
 texture = ExtResource("2_uxpwt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_nl1ih")
 
 [node name="HealthbarPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -2)
@@ -56,11 +59,6 @@ stretch_margin_bottom = 4
 texture_under = ExtResource("4_ms2v4")
 texture_over = ExtResource("5_lsbrd")
 texture_progress = ExtResource("6_ykw8j")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CylinderShape3D_nl1ih")
 
 [node name="RegularSprites" type="Node3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
@@ -96,3 +94,10 @@ texture = ExtResource("2_uxpwt")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("11_wcm8t")
 autoplay = true
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_nl1ih")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

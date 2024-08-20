@@ -1,4 +1,4 @@
-class_name Entity extends Node3D
+class_name Entity extends CharacterBody3D
 #base entity class for all things in the game that can die and otherwise factor into gameplay
 @export var health:int = 100
 @export var radius:float = 1.0
@@ -19,7 +19,7 @@ func die():
 
 func take_damage(damage:int)->bool:
 	health -= damage
-	if(health < 0):
+	if(health <= 0):
 		return true
 	else:
 		return false
@@ -29,7 +29,7 @@ func is_game_paused():
 
 func set_queasy(queasy):
 	queasy_mode_enabled = queasy
-	
+
 	if default_sprite and queasy_sprite:
 		default_sprite.set_visible(queasy_mode_enabled)
 		queasy_sprite.set_visible(not queasy_mode_enabled)
