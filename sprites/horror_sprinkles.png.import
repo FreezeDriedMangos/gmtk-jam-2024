@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cksq1rtv17hvp"
-path="res://.godot/imported/money_coin.png-867ee859be49f204dec526cae7d68cfb.ctex"
+uid="uid://crlmxcokr1ff4"
+path="res://.godot/imported/horror_sprinkles.png-2e21072d33aad8bfc329b4174b6201b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/default/money_coin.png"
-dest_files=["res://.godot/imported/money_coin.png-867ee859be49f204dec526cae7d68cfb.ctex"]
+source_file="res://sprites/horror_sprinkles.png"
+dest_files=["res://.godot/imported/horror_sprinkles.png-2e21072d33aad8bfc329b4174b6201b5.ctex"]
 
 [params]
 
@@ -19,13 +19,13 @@ compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
