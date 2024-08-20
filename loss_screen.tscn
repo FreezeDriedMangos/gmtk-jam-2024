@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://ci20h48t4i8o2"]
+
+[ext_resource type="Script" path="res://end_screen.gd" id="1_4os2g"]
+[ext_resource type="FontFile" uid="uid://ndmr3rwyy1mj" path="res://fonts/vintage-propagandist/Vintage Propagandist.ttf" id="2_nc1mt"]
+[ext_resource type="Texture2D" path="res://sprites/default/IMG_0479.png" id="3_a7nje"]
+
+[sub_resource type="Gradient" id="Gradient_nka7p"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kb5y1"]
+gradient = SubResource("Gradient_nka7p")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pebc7"]
+font = ExtResource("2_nc1mt")
+font_size = 60
+outline_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_1k2jq"]
+font = ExtResource("2_nc1mt")
+font_size = 32
+font_color = Color(1, 1, 1, 0.698039)
+outline_size = 3
+outline_color = Color(1, 1, 1, 0.698039)
+
+[sub_resource type="Gradient" id="Gradient_q2wpw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.096, 0.12, 0.24, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3i0qy"]
+gradient = SubResource("Gradient_q2wpw")
+
+[sub_resource type="Gradient" id="Gradient_re5vv"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.228, 0.285, 0.57, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pekks"]
+gradient = SubResource("Gradient_re5vv")
+
+[node name="LossScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4os2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-589, -331)
+scale = Vector2(100, 100)
+texture = SubResource("GradientTexture2D_kb5y1")
+
+[node name="Title" type="Label" parent="."]
+z_index = 100
+layout_mode = 0
+offset_left = -214.0
+offset_top = -118.0
+offset_right = 205.0
+offset_bottom = -58.0
+text = "LOSS"
+label_settings = SubResource("LabelSettings_pebc7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BeginGameLabel" type="Label" parent="."]
+z_index = 100
+layout_mode = 0
+offset_left = -173.0
+offset_top = 10.0
+offset_right = 165.0
+offset_bottom = 47.0
+text = "Thank you for playing"
+label_settings = SubResource("LabelSettings_1k2jq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="."]
+z_index = 15
+layout_mode = 0
+offset_left = -187.0
+offset_top = 82.0
+offset_right = 101.0
+offset_bottom = 114.0
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_nc1mt")
+theme_override_font_sizes/font_size = 23
+text = "   Return to Main Menu   "
+
+[node name="ModalBackground" type="Sprite2D" parent="."]
+z_index = 12
+position = Vector2(-2, -2)
+scale = Vector2(10.5, 8.749)
+texture = SubResource("GradientTexture2D_3i0qy")
+
+[node name="ModalBackground2" type="Sprite2D" parent="."]
+z_index = 13
+position = Vector2(-2, -2)
+scale = Vector2(10, 8.333)
+texture = SubResource("GradientTexture2D_pekks")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-3, -19)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_a7nje")
+
+[connection signal="pressed" from="MainMenuButton" to="." method="return_to_main_menu"]
