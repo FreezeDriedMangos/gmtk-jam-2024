@@ -111,16 +111,12 @@ func _physics_process(delta: float) -> void:
 
 	#
 	# fire
-	
 
 	if firing:
 		var current_ms = Time.get_ticks_msec()
 		if current_ms - last_shot_ms > firing_interval_ms:
 			last_shot_ms = current_ms
 			fire(self.position + desired_dir.normalized()*0.5, self.velocity + desired_dir.normalized()*18)
-
-			
-			
 
 
 	#

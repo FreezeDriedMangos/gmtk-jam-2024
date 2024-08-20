@@ -1,6 +1,7 @@
 class_name CthonicClient extends Entity
 
 @export var camera_that_wont_leave_like_dad : Camera3D
+@export var throat:AudioStreamPlayer3D
 @export var move_target : Node3D
 
 func _ready():

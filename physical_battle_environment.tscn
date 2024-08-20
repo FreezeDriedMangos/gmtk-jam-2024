@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dr8lsooa8abcl"]
+[gd_scene load_steps=17 format=3 uid="uid://dr8lsooa8abcl"]
 
 [ext_resource type="PackedScene" uid="uid://8r5cmlci5ks5" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://entity/coin_projectile.tscn" id="8_xu5du"]
 [ext_resource type="AudioStream" uid="uid://beapeba0ssuj6" path="res://sound/Pellet Heck.wav" id="10_bw7jw"]
 [ext_resource type="Script" path="res://world_sound_manager.gd" id="11_n1p3e"]
+[ext_resource type="Material" uid="uid://cmugoa86yl3od" path="res://rockfloor_mat.tres" id="11_unp3p"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aqfvk"]
 panorama = ExtResource("4_x82jq")
@@ -39,12 +40,8 @@ volumetric_fog_enabled = true
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_g2bu4"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akf8o"]
-albedo_texture = ExtResource("8_tuuuo")
-texture_filter = 0
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_oyup1"]
-material = SubResource("StandardMaterial3D_akf8o")
+material = ExtResource("11_unp3p")
 size = Vector2(1000, 1000)
 
 [node name="PhysicalBattleEnvironment" type="Node3D"]
@@ -54,8 +51,16 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 34.3337)
 target = NodePath("../CthonicClient")
 
 [node name="CthonicClient" parent="." node_paths=PackedStringArray("camera_that_wont_leave_like_dad", "move_target") instance=ExtResource("2_ndhfw")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -139.213)
 camera_that_wont_leave_like_dad = NodePath("../Camera3D")
 move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
+health = 1000
+radius = 50.0
+
+[node name="HorrorSpawner" type="Node3D" parent="CthonicClient"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.325)
+script = ExtResource("8_1od3q")
+spawn_interval_ms = 250
 
 [node name="Fairy" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_pbh6t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
@@ -103,19 +108,19 @@ camera_attributes = SubResource("CameraAttributesPractical_g2bu4")
 compositor = null
 script = null
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy")]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("followed_entity")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.01, 120, 0.992)
 current = true
 fov = 5.0
 size = 11.476
 script = ExtResource("2_8ghd0")
+followed_entity = NodePath("../Fairy")
 height = 120.0
-fairy = NodePath("../Fairy")
 
-[node name="HorrorSpawner" type="Node3D" parent="."]
-script = ExtResource("8_1od3q")
-spawn_interval_ms = 250
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 4.94719e-06, -115.973)
+current = true
 
 [node name="CoinProjectile" parent="." instance=ExtResource("8_xu5du")]
 

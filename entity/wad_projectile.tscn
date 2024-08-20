@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhnnvhkeuessg"]
+
+[ext_resource type="Script" path="res://entity/wad_projectile.gd" id="1_rrkyw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wyy22"]
+
+[node name="WadProjectile" type="Node3D"]
+script = ExtResource("1_rrkyw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CylinderShape3D_wyy22")
