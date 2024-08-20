@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://8r5cmlci5ks5"]
+[gd_scene load_steps=6 format=3 uid="uid://8r5cmlci5ks5"]
 
 [ext_resource type="Script" path="res://entity/tooth_mech.gd" id="1_tljki"]
+[ext_resource type="AudioStream" uid="uid://kkjmejkkthlt" path="res://sound/hovercraft_loop.wav" id="3_42wrm"]
 [ext_resource type="PackedScene" uid="uid://dmkfydsnbq5i1" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
 [ext_resource type="Texture2D" uid="uid://draq7strxknux" path="res://sprites/default/mech/mech_strata_1.png" id="3_6mvuv"]
 [ext_resource type="Texture2D" uid="uid://cqv1tj1kfiwq3" path="res://sprites/default/mech/mech_strata_2.png" id="4_jwool"]
@@ -109,3 +110,7 @@ spot_angle = 18.2813
 [node name="OmniLight3D" type="OmniLight3D" parent="TOOTH_MECH_queasyModel/Cannon/SpotLight3D3"]
 light_energy = 10.0
 omni_range = 10.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_42wrm")
+autoplay = true

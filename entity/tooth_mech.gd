@@ -2,6 +2,7 @@ class_name ToothMech extends Entity
 
 @export var target:Entity
 @export var target_locator:Node3D
+@export var rumble:AudioStreamPlayer3D
 @export var camera:Camera3D
 
 const CANNON_DEGREES_TURN_PER_SECOND = 30
