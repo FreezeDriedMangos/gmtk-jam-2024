@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bivatufcg6odm"]
+
+[ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_ll0ic"]
+[ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_uxpwt"]
+[ext_resource type="Script" path="res://boss_health.gd" id="3_lo03c"]
+[ext_resource type="Texture2D" uid="uid://b7ug2m78i17cl" path="res://sprites/healthbar/placeholder_healthbar_under.png" id="4_ms2v4"]
+[ext_resource type="Texture2D" uid="uid://dygnox3qi0ry5" path="res://sprites/healthbar/placeholder_healthbar_over.png" id="5_lsbrd"]
+[ext_resource type="Texture2D" uid="uid://ca226kpk243oe" path="res://sprites/healthbar/placeholder_healthbar_bar.png" id="6_ykw8j"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nl1ih"]
+height = 12.4368
+radius = 3.88676
+
+[node name="CthonicClient" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.325)
+script = ExtResource("1_ll0ic")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8006, 0)
+billboard = 2
+render_priority = 1
+texture = ExtResource("2_uxpwt")
+
+[node name="HealthbarPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BossHealth" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 200.0
+offset_bottom = 35.0
+scale = Vector2(2, 2)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("3_lo03c")
+
+[node name="Bar" type="TextureProgressBar" parent="CanvasLayer/BossHealth"]
+texture_filter = 1
+layout_mode = 2
+value = 80.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("4_ms2v4")
+texture_over = ExtResource("5_lsbrd")
+texture_progress = ExtResource("6_ykw8j")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_nl1ih")

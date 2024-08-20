@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cba5h1v4kswxb"]
+[gd_scene load_steps=20 format=3 uid="uid://cba5h1v4kswxb"]
 
 [ext_resource type="Script" path="res://entity/minor_horror.gd" id="1_drngm"]
 [ext_resource type="Texture2D" uid="uid://c3xup71ndptis" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_1.png" id="2_c4l82"]
+[ext_resource type="Texture2D" uid="uid://crlmxcokr1ff4" path="res://sprites/horror_sprinkles.png" id="2_efk8o"]
 [ext_resource type="Texture2D" uid="uid://dyq0m6slmvx7a" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_2.png" id="3_8y60j"]
 [ext_resource type="Texture2D" uid="uid://c2uonoej8rrki" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_3.png" id="4_ojqki"]
 [ext_resource type="Texture2D" uid="uid://3jvbdujymohj" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_4.png" id="5_jo23t"]
@@ -14,7 +15,23 @@
 [ext_resource type="Texture2D" uid="uid://cw0c5u32yvse5" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_5.png" id="12_6uk82"]
 [ext_resource type="Texture2D" uid="uid://coxrq6qpjcam2" path="res://sprites/default/minor_horror/strata_2/minor_horror_strata_2_frame_6.png" id="13_8j21o"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yu85s"]
+transparency = 2
+alpha_scissor_threshold = 0.894
+alpha_antialiasing_mode = 0
+blend_mode = 1
+albedo_texture = ExtResource("2_efk8o")
+emission_enabled = true
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_efk8o")
+uv1_scale = Vector3(4, 4, 4)
+texture_filter = 2
+texture_repeat = false
+
 [sub_resource type="BoxMesh" id="BoxMesh_fvn5y"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_yu85s")
+flip_faces = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_om1x2"]
 animations = [{
@@ -68,19 +85,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MinorHorror" type="Node3D" node_paths=PackedStringArray("mesh")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ffpei"]
+radius = 0.509354
+
+[node name="MinorHorror" type="Node3D" node_paths=PackedStringArray("mesh", "collider_area")]
 script = ExtResource("1_drngm")
-move_target = Vector3(0, 0, 0)
+latched = true
+damage_per_second = 0
 mesh = NodePath("Mesh")
 drill_rads_sec_default = 20.0
 drill_rads_sec_latched = 160.0
-drill_rads_sec_current = 20.0
-rotate_vector = Vector3(0, 0, 1)
+drill_rads_sec_current = 160.0
 base_move_speed = 22.0
+collider_area = NodePath("Area3D")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, 0.5, 0.5, 0, 0, 0)
-visible = false
+transform = Transform3D(-0.247708, 0.968834, -1.68329e-07, 0.949766, 0.242833, 0.197422, 0.191269, 0.0489029, -0.980319, 0, 0, 0)
 mesh = SubResource("BoxMesh_fvn5y")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -92,3 +112,8 @@ sprite_frames = SubResource("SpriteFrames_om1x2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.46851e-10, -0.0125105)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_44l1g")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_ffpei")

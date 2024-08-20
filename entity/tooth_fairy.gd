@@ -9,11 +9,22 @@ class_name ToothFairy extends Entity
 @export var max_friction: float = 1.9
 @export var min_friction: float = 0.9
 @export var max_turn_speed: float = 0.09
+
+@export var base_fov:float = 5.0
+@export var boosting_fov_multiplier:float = 1.5
+
+@export var gun_sound:AudioStreamPlayer3D
+
 var facing: float = 0
 
 @export var camera: Camera3D
 
 var boosting = false
+var firing = false
+var firing_interval_ms = 60
+var last_shot_ms = 0.0
+
+var coin_projectile_resource = preload("res://entity/coin_projectile.tscn")
 
 var mouseScreenPos = Vector2()
 
@@ -32,10 +43,11 @@ func _input(event):
 		#print("Mouse Click/Unclick at: ", event.position)
 		if event.button_index == 1:
 			boosting = event.pressed
-		#print("EVENT DETAILS %s %s " % [event.button_index, event.pressed])
+		elif event.button_index == 2:
+			firing = event.pressed
 	elif event is InputEventMouseMotion:
-		var rect = camera.get_viewport().size
 		mouseScreenPos = event.position
+
 
 
 func raycast_from_mouse():
@@ -55,6 +67,15 @@ func raycast_from_mouse():
 
 
 func _physics_process(delta: float) -> void:
+	# zoom out camera a lil when boosting
+	#
+
+	if boosting: 
+		camera.fov = lerp(camera.fov, base_fov*boosting_fov_multiplier, 4.0*delta)
+	else:
+		camera.fov = lerp(camera.fov, base_fov, 3.0*delta)
+			
+		
 	#
 	# determine desired movement direction
 	#
@@ -74,6 +95,7 @@ func _physics_process(delta: float) -> void:
 	rotate_y(facing_delta)
 	facing = facing + facing_delta
 
+
 	#
 	# move
 	#
@@ -86,9 +108,30 @@ func _physics_process(delta: float) -> void:
 	var speed = boost_speed if boosting else base_move_speed
 	self.velocity = self.velocity*friction + (1-friction)*Vector3(sin(facing), 0, cos(facing))*speed
 
+	#
+	# fire
+	
+
+	if firing:
+		var current_ms = Time.get_ticks_msec()
+		if current_ms - last_shot_ms > firing_interval_ms:
+			last_shot_ms = current_ms
+			fire(self.position + desired_dir.normalized()*0.5, self.velocity + desired_dir.normalized()*18)
+
+			
+			
+
 
 	#
 	# update player position
 	#
 
 	self.position += delta * self.velocity
+
+func fire(shot_position:Vector3, shot_velocity:Vector3):
+	var shot:CoinProjectile = coin_projectile_resource.instantiate()
+	get_parent().add_child(shot)
+	shot.scale = Vector3(1,1,1) * 0.125
+	shot.velocity = shot_velocity
+	shot.position = shot_position
+	gun_sound.play()
