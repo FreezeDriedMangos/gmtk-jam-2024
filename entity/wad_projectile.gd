@@ -23,3 +23,8 @@ func _process(delta):
 
 	body.rotation += spin*delta
 	position += velocity*delta
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is CthonicClient:
+		GamestateManagerGlobal.apply_damage(1000, body, self)

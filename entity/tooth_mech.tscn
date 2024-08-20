@@ -17,22 +17,17 @@ radius = 1.42809
 top_radius = 0.25
 bottom_radius = 0.15
 
-[node name="ToothMech" type="Node3D" node_paths=PackedStringArray("collider_area", "default_sprite", "queasy_sprite")]
+[node name="ToothMech" type="CharacterBody3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_tljki")
-radius = 100.0
-collider_area = NodePath("Collision")
-default_sprite = NodePath("RegularSpritesTransform")
-queasy_sprite = NodePath("TOOTH_MECH_queasyModel")
 
-[node name="Collision" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01507, 0)
 shape = SubResource("CylinderShape3D_rucmi")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.413899, 0.910323, 0, -0.910323, 0.413899, 0, 6.3836, 2.1642)
+current = true
 
 [node name="TargetLocator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, -2.4)

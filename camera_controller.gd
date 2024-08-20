@@ -39,7 +39,7 @@ func _input(event):
 	
 			
 	elif followed_entity is ToothMech:
-		followed_tooth_mech = (followed_entity as ToothMech) 
+		followed_tooth_mech = (followed_entity as ToothMech)
 		if event is InputEventKey:
 			print(event.as_text())
 			if event.as_text() == 'W':

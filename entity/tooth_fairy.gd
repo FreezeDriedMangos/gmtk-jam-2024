@@ -54,30 +54,23 @@ func _input(event):
 
 func raycast_from_mouse():
 	var ray_start = camera.project_ray_origin(mouseScreenPos)
-	var ray_end = ray_start + camera.project_ray_normal(mouseScreenPos) * 1000
-	var world3d : World3D = get_world_3d()
-	var space_state = world3d.direct_space_state
+	var camera_normal = camera.project_ray_normal(mouseScreenPos)
 
-	if space_state == null:
-		return
-
-	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
-	query.collide_with_areas = true
-
-	var result = space_state.intersect_ray(query)
-	return result["position"]
+	var lambda = ray_start.y / camera_normal.y
+	var result = ray_start - lambda*camera_normal
+	return result
 
 
 func _physics_process(delta: float) -> void:
 	# zoom out camera a lil when boosting
 	#
 
-	if boosting: 
+	if boosting:
 		camera.fov = lerp(camera.fov, base_fov*boosting_fov_multiplier, 4.0*delta)
 	else:
 		camera.fov = lerp(camera.fov, base_fov, 3.0*delta)
-			
-		
+
+
 	#
 	# determine desired movement direction
 	#
@@ -119,12 +112,10 @@ func _physics_process(delta: float) -> void:
 			last_shot_ms = current_ms
 			fire(self.position + desired_dir.normalized()*0.5, self.velocity + desired_dir.normalized()*18)
 
-
 	#
 	# update player position
 	#
-
-	super(delta)
+	self.position += delta * self.velocity
 
 func fire(shot_position:Vector3, shot_velocity:Vector3):
 	if teeth - 1 <= 0:
@@ -138,4 +129,7 @@ func fire(shot_position:Vector3, shot_velocity:Vector3):
 	shot.velocity = shot_velocity
 	shot.position = shot_position
 	gun_sound.play()
-	
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body is MinorHorror:
+		GamestateManagerGlobal.apply_damage(100, body, self)

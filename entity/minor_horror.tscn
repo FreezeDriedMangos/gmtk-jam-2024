@@ -35,7 +35,7 @@ material = SubResource("StandardMaterial3D_yu85s")
 flip_faces = true
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ffpei"]
-radius = 0.509354
+radius = 0.2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_om1x2"]
 animations = [{
@@ -89,26 +89,24 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MinorHorror" type="Node3D" node_paths=PackedStringArray("mesh", "collider_area", "default_sprite", "queasy_sprite")]
+[node name="MinorHorror" type="CharacterBody3D" node_paths=PackedStringArray("mesh", "default_sprite", "queasy_sprite")]
 script = ExtResource("1_drngm")
 latched = true
 damage_per_second = 0
-mesh = NodePath("Mesh")
 drill_rads_sec_default = 20.0
 drill_rads_sec_latched = 160.0
 drill_rads_sec_current = 160.0
 base_move_speed = 22.0
-collider_area = NodePath("Area3D")
+mesh = NodePath("Mesh")
+collider_area = null
 default_sprite = NodePath("RegularSprites")
 queasy_sprite = NodePath("QueasySprites")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.122855, 0.992424, 7.5579e-08, 0.857973, -0.106211, -0.502595, -0.498787, 0.0617463, -0.864523, 0, 0, 0)
+transform = Transform3D(-0.00883948, -0.99996, 8.41046e-08, 0.72692, -0.0064259, -0.686692, 0.686665, -0.00606993, 0.726949, 0, 0, 0)
 mesh = SubResource("BoxMesh_fvn5y")
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_ffpei")
 
 [node name="RegularSprites" type="Node3D" parent="."]

@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	if walking:
 		velocity = desired_direction.normalized()*base_move_speed
 	else:
-		velocity = Vector3(0,0,0)
-	
+		velocity = Vector3(0, 0, 0)
+
 	# move in the direction of velocity
 	super(delta)
