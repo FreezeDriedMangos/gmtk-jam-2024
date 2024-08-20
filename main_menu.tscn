@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw7vliy83iofa"]
+[gd_scene load_steps=15 format=3 uid="uid://cw7vliy83iofa"]
 
 [ext_resource type="Script" path="res://main_menu_controller.gd" id="1_sxlmf"]
 [ext_resource type="Texture2D" uid="uid://r6hgfdcxxxit" path="res://sprites/default/menu/main_menu_no_selection.png" id="2_cm1fu"]
@@ -28,6 +28,10 @@ colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ni7ej"]
 gradient = SubResource("Gradient_55eux")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xv2e4"]
+font = ExtResource("6_p161m")
+font_color = Color(1, 1, 1, 0.431373)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -137,6 +141,15 @@ expand_icon = true
 z_index = -10
 scale = Vector2(4.7307, 719.914)
 texture = SubResource("GradientTexture1D_ni7ej")
+
+[node name="Attributions" type="Label" parent="TeethMenu"]
+offset_left = -565.0
+offset_top = 278.0
+offset_right = -227.0
+offset_bottom = 315.0
+text = "Game by the Dentiphobia Team  -  Font by Loki Gwynbleidd on Font Library "
+label_settings = SubResource("LabelSettings_xv2e4")
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="TeethMenu/ToggleQueasyMode" to="MainMenuController" method="hover_right"]
 [connection signal="mouse_exited" from="TeethMenu/ToggleQueasyMode" to="MainMenuController" method="unhover_right"]
