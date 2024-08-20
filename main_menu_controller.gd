@@ -19,6 +19,7 @@ func start_game():
 		%TeethMenu.get_goin()
 	else:
 		get_tree().change_scene_to_file("res://physical_battle_environment.tscn")
+		load("res://queasy_marker.tscn")
 
 func toggle_queasy():
 	if starting_game:

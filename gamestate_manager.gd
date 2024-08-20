@@ -17,9 +17,13 @@ var despawn_array:Array[Entity]
 var last_damage_tick: int
 var last_horror_spawn_tick: int
 
-
-@export var queasy_mode_enabled: bool = false:
+var internal_queasy: bool = false
+@export var queasy_mode_enabled: bool:
+	get:
+		return internal_queasy
 	set(value):
+		internal_queasy = value
+		print("setting quasy %s" % value)
 		for entity in self.all_entities:
 			entity.set_queasy(value)
 
@@ -36,9 +40,12 @@ var first_register = true
 func register_entity(entity:Entity):
 	if(entity == null):
 		return
-
+	
 	if first_register:
 		print("first register")
+		print("queasy mode %s" % queasy_mode_enabled)
+		
+		
 		first_register = false
 		get_tree().current_scene.get_node('%RegularToothCountSprite').set_visible(not queasy_mode_enabled)
 		get_tree().current_scene.get_node('%QueasyToothCountSprite').set_visible(queasy_mode_enabled)

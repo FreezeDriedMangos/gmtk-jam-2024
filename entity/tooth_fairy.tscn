@@ -7,12 +7,14 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
 
-[node name="Fairy" type="CharacterBody3D" node_paths=PackedStringArray("gun_sound")]
+[node name="Fairy" type="CharacterBody3D" node_paths=PackedStringArray("gun_sound", "default_sprite", "queasy_sprite")]
 script = ExtResource("1_lwayr")
 boost_speed = 28.0
 max_friction = 1.0
 min_friction = 0.95
 gun_sound = NodePath("CoinGunSound")
+default_sprite = NodePath("RegularSprites")
+queasy_sprite = NodePath("QueasySprites")
 
 [node name="CameraTarget" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.31733, 0.66548)

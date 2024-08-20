@@ -1,8 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://ci20h48t4i8o2"]
+[gd_scene load_steps=10 format=3 uid="uid://ci20h48t4i8o2"]
 
-[ext_resource type="Script" path="res://end_screen.gd" id="1_4os2g"]
 [ext_resource type="FontFile" uid="uid://ndmr3rwyy1mj" path="res://fonts/vintage-propagandist/Vintage Propagandist.ttf" id="2_nc1mt"]
-[ext_resource type="Texture2D" path="res://sprites/default/IMG_0479.png" id="3_a7nje"]
 
 [sub_resource type="Gradient" id="Gradient_nka7p"]
 offsets = PackedFloat32Array(0)
@@ -44,7 +42,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4os2g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-589, -331)
@@ -106,6 +103,5 @@ texture = SubResource("GradientTexture2D_pekks")
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(-3, -19)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_a7nje")
 
 [connection signal="pressed" from="MainMenuButton" to="." method="return_to_main_menu"]

@@ -102,7 +102,7 @@ default_sprite = NodePath("RegularSprites")
 queasy_sprite = NodePath("QueasySprites")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.905028, 0.425351, 5.63854e-09, -0.0200536, -0.0426684, 0.998888, 0.424879, 0.904021, 0.047146, 0, 0, 0)
+transform = Transform3D(0.375294, -0.926905, 1.19523e-07, 0.926328, 0.37506, 0.0352982, -0.0327182, -0.0132471, 0.999377, 0, 0, 0)
 mesh = SubResource("BoxMesh_fvn5y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

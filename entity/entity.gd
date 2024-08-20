@@ -33,5 +33,10 @@ func set_queasy(queasy):
 	queasy_mode_enabled = queasy
 
 	if default_sprite and queasy_sprite:
-		default_sprite.set_visible(queasy_mode_enabled)
-		queasy_sprite.set_visible(not queasy_mode_enabled)
+		default_sprite.set_visible(not queasy_mode_enabled)
+		queasy_sprite.set_visible(queasy_mode_enabled)
+		
+		print(self.name)
+		print(queasy_mode_enabled)
+		print(default_sprite.visible)
+		print(queasy_sprite.visible)

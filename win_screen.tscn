@@ -1,8 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://i0gi8yuv20ly"]
+[gd_scene load_steps=10 format=3 uid="uid://i0gi8yuv20ly"]
 
-[ext_resource type="Script" path="res://end_screen.gd" id="1_8l8rx"]
 [ext_resource type="FontFile" uid="uid://ndmr3rwyy1mj" path="res://fonts/vintage-propagandist/Vintage Propagandist.ttf" id="1_i70f1"]
-[ext_resource type="Texture2D" path="res://sprites/default/IMG_0479.png" id="2_gee72"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pebc7"]
 font = ExtResource("1_i70f1")
@@ -44,12 +42,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8l8rx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, -19)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_gee72")
 
 [node name="Title" type="Label" parent="."]
 z_index = 100
