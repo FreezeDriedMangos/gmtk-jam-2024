@@ -46,10 +46,12 @@ func register_entity(entity:Entity):
 
 	all_entities.append(entity)
 
-func kill_entity(entity:Entity):
+func kill_entity(entity:Entity, killer:Entity):
 	if(entity is CthonicClient):
 		end_game(true)
 	elif(entity is MinorHorror):
+		if(killer is ToothFairy):
+			killer.teeth += 1
 		minor_horrors.erase(entity)
 	elif(entity is ToothFairy):
 		end_game(false)
@@ -58,13 +60,16 @@ func kill_entity(entity:Entity):
 	elif(entity is CoinProjectile):
 		coin_projectiles.erase(entity)
 	all_entities.erase(entity)
-	
+
 	entity.queue_free()
 
 	despawn_array.append(entity)
 
 func apply_damage(damage:int, hit_entity:Entity, attacker:Entity):
-	hit_entity.take_damage(damage)
+	#slightly opaque: take_damage applies damage and returns 'true' if the entity dies as a result
+	if hit_entity.take_damage(damage):
+		kill_entity(hit_entity, attacker)
+
 
 func is_paused():
 	return paused
