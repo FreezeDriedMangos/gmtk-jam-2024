@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c1088vvxvslj8"
+path="res://.godot/imported/_drum slower.wav-09636fe3bb698af29568ab175b592606.sample"
+
+[deps]
+
+source_file="res://sound/_drum slower.wav"
+dest_files=["res://.godot/imported/_drum slower.wav-09636fe3bb698af29568ab175b592606.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

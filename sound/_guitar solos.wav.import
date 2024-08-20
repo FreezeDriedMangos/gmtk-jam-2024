@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ckfaejonubvsk"
+path="res://.godot/imported/_guitar solos.wav-18586b80a0cf219658010b546efe8786.sample"
+
+[deps]
+
+source_file="res://sound/_guitar solos.wav"
+dest_files=["res://.godot/imported/_guitar solos.wav-18586b80a0cf219658010b546efe8786.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
