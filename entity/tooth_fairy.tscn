@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5gciopklwjbo"]
 
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="1_lwayr"]
-[ext_resource type="Texture2D" uid="uid://dql3w62pwfoeb" path="res://sprites/default/tooth_fairy_skullbike.png" id="2_tito4"]
+[ext_resource type="Texture2D" uid="uid://c52wt85a8locy" path="res://sprites/default/tooth_fairy_skullbike.png" id="2_tito4"]
 [ext_resource type="AudioStream" uid="uid://di0n586e6m5jw" path="res://sound/mixkit-money-bag-drop-1989.wav" id="3_emq8k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
