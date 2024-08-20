@@ -36,8 +36,8 @@ func _input(event):
 				followed_tooth_fairy.boosting = event.pressed
 			elif event.button_index == 2:
 				followed_tooth_fairy.firing = event.pressed
-	
-			
+
+
 	elif followed_entity is ToothMech:
 		followed_tooth_mech = (followed_entity as ToothMech)
 		if event is InputEventKey:
@@ -52,7 +52,7 @@ func _input(event):
 func _process(delta: float) -> void:
 	if followed_entity is ToothFairy:
 		self.position = followed_entity.position + 0.15*followed_entity.velocity + Vector3(0, height, 0)
-		
+
 	elif followed_entity is ToothMech:
 		var mouseWorldPos = raycast_from_mouse()
 		var mouseRelPos = mouseWorldPos - self.position
@@ -60,19 +60,11 @@ func _process(delta: float) -> void:
 		self.position = followed_entity.position + 5*followed_entity.velocity + Vector3(0, height, 0)
 		fov = 30
 
-	
+
 
 func raycast_from_mouse():
 	var ray_start = project_ray_origin(mouseScreenPos)
-	var ray_end = ray_start + project_ray_normal(mouseScreenPos) * 1000
-	var world3d : World3D = get_world_3d()
-	var space_state = world3d.direct_space_state
+	var normal = project_ray_normal(mouseScreenPos)
 
-	if space_state == null:
-		return
-
-	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
-	query.collide_with_areas = true
-
-	var result = space_state.intersect_ray(query)
-	return result["position"]
+	var lambda = ray_start.y / normal.y
+	return ray_start - lambda*normal
