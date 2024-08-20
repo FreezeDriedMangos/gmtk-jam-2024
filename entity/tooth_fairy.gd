@@ -14,7 +14,9 @@ class_name ToothFairy extends Entity
 @export var boosting_fov_multiplier:float = 1.5
 
 @export var gun_sound:AudioStreamPlayer3D
-@export var teeth:int = 0
+@export var teeth:int = 0:
+	set(value):
+		%ToothCountLabel.text = str(teeth)
 
 var facing: float = 0
 

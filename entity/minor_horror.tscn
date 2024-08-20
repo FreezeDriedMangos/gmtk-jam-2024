@@ -103,7 +103,7 @@ default_sprite = NodePath("RegularSprites")
 queasy_sprite = NodePath("QueasySprites")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.221408, -0.975181, 8.62174e-08, -0.961734, -0.218355, 0.165488, -0.16138, -0.0366404, -0.986212, 0, 0, 0)
+transform = Transform3D(0.122855, 0.992424, 7.5579e-08, 0.857973, -0.106211, -0.502595, -0.498787, 0.0617463, -0.864523, 0, 0, 0)
 mesh = SubResource("BoxMesh_fvn5y")
 
 [node name="Area3D" type="Area3D" parent="."]

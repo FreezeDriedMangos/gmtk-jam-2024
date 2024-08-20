@@ -23,4 +23,3 @@ func _process(delta: float) -> void:
 		self.position = followed_entity.position + 0.15*followed_entity.velocity + Vector3(0, height, 0)
 	elif followed_entity is ToothMech:
 		self.position = followed_entity.position + 5*followed_entity.velocity + Vector3(0, height, 0)
-
