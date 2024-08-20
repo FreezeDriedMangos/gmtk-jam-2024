@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://8r5cmlci5ks5" path="res://entity/tooth_mech.tscn" id="1_6x8vs"]
 [ext_resource type="Script" path="res://camera_controller.gd" id="2_8ghd0"]
 [ext_resource type="PackedScene" uid="uid://px6hlfdd5p2d" path="res://entity/cthonic_client.tscn" id="2_ndhfw"]
-[ext_resource type="PackedScene" path="res://entity/tooth_fairy.tscn" id="3_pbh6t"]
+[ext_resource type="PackedScene" uid="uid://4pdybyqpfal3" path="res://entity/tooth_fairy.tscn" id="3_pbh6t"]
 [ext_resource type="Texture2D" uid="uid://csg3e5hua755n" path="res://background_placeholder_skybox.png" id="4_x82jq"]
 [ext_resource type="PackedScene" uid="uid://bmprv2bjcm8jq" path="res://entity/minor_horror.tscn" id="6_erii8"]
 [ext_resource type="Script" path="res://horror_spawner.gd" id="8_1od3q"]

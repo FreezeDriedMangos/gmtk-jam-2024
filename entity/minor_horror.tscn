@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entity/minor_horror.gd" id="1_drngm"]
 [ext_resource type="Texture2D" uid="uid://c3xup71ndptis" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_1.png" id="2_c4l82"]
-[ext_resource type="Texture2D" path="res://sprites/horror_sprinkles.png" id="2_efk8o"]
+[ext_resource type="Texture2D" uid="uid://crlmxcokr1ff4" path="res://sprites/horror_sprinkles.png" id="2_efk8o"]
 [ext_resource type="Texture2D" uid="uid://dyq0m6slmvx7a" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_2.png" id="3_8y60j"]
 [ext_resource type="Texture2D" uid="uid://c2uonoej8rrki" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_3.png" id="4_ojqki"]
 [ext_resource type="Texture2D" uid="uid://3jvbdujymohj" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_4.png" id="5_jo23t"]
@@ -103,7 +103,7 @@ default_sprite = NodePath("RegularSprites")
 queasy_sprite = NodePath("QueasySprites")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.993436, -0.114384, -8.73092e-08, 0.114235, -0.992145, 0.0509734, -0.0058306, 0.0506387, 0.9987, 0, 0, 0)
+transform = Transform3D(0.221408, -0.975181, 8.62174e-08, -0.961734, -0.218355, 0.165488, -0.16138, -0.0366404, -0.986212, 0, 0, 0)
 mesh = SubResource("BoxMesh_fvn5y")
 
 [node name="Area3D" type="Area3D" parent="."]

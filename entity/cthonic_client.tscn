@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_ll0ic"]
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_uxpwt"]
 [ext_resource type="Script" path="res://boss_health.gd" id="3_lo03c"]
-[ext_resource type="Texture2D" path="res://sprites/healthbar/placeholder_healthbar_under.png" id="4_ms2v4"]
-[ext_resource type="Texture2D" path="res://sprites/healthbar/placeholder_healthbar_over.png" id="5_lsbrd"]
-[ext_resource type="Texture2D" path="res://sprites/healthbar/placeholder_healthbar_bar.png" id="6_ykw8j"]
+[ext_resource type="Texture2D" uid="uid://b7ug2m78i17cl" path="res://sprites/healthbar/placeholder_healthbar_under.png" id="4_ms2v4"]
+[ext_resource type="Texture2D" uid="uid://dygnox3qi0ry5" path="res://sprites/healthbar/placeholder_healthbar_over.png" id="5_lsbrd"]
+[ext_resource type="Texture2D" uid="uid://ca226kpk243oe" path="res://sprites/healthbar/placeholder_healthbar_bar.png" id="6_ykw8j"]
 [ext_resource type="Texture2D" uid="uid://dmxureu3m76r7" path="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_1.png" id="7_sbb27"]
 [ext_resource type="Texture2D" uid="uid://ctnrso8e0e8t" path="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_2.png" id="8_r6esv"]
 [ext_resource type="Texture2D" uid="uid://ctwdjehho6dd7" path="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_3.png" id="9_5y4t6"]
@@ -18,7 +18,7 @@ radius = 3.88676
 [node name="CthonicClient" type="Node3D" node_paths=PackedStringArray("default_sprite", "queasy_sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.325)
 script = ExtResource("1_ll0ic")
-default_sprite = NodePath("Sprites")
+default_sprite = NodePath("RegularSprites")
 queasy_sprite = NodePath("QueasySprites")
 
 [node name="HealthbarPosition" type="Node3D" parent="."]
@@ -54,25 +54,25 @@ texture_progress = ExtResource("6_ykw8j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_nl1ih")
 
-[node name="Sprites" type="Node3D" parent="."]
+[node name="RegularSprites" type="Node3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
 
-[node name="Sprite3D" type="Sprite3D" parent="Sprites"]
+[node name="Sprite3D" type="Sprite3D" parent="RegularSprites"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("7_sbb27")
 
-[node name="Sprite3D2" type="Sprite3D" parent="Sprites"]
+[node name="Sprite3D2" type="Sprite3D" parent="RegularSprites"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, 0)
 texture_filter = 0
 texture = ExtResource("8_r6esv")
 
-[node name="Sprite3D3" type="Sprite3D" parent="Sprites"]
+[node name="Sprite3D3" type="Sprite3D" parent="RegularSprites"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.2, 0)
 texture_filter = 0
 texture = ExtResource("9_5y4t6")
 
-[node name="Sprite3D4" type="Sprite3D" parent="Sprites"]
+[node name="Sprite3D4" type="Sprite3D" parent="RegularSprites"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.26, 0)
 texture_filter = 0
 texture = ExtResource("10_v3imf")
