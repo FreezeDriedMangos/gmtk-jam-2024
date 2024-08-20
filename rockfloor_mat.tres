@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://cmugoa86yl3od"]
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ckjj51aujs1cq"]
 
 [ext_resource type="Texture2D" uid="uid://byb12j17gjgwn" path="res://sprites/misc/rockground/PXL_20240820_043134481.jpg" id="1_liu8p"]
 [ext_resource type="Texture2D" uid="uid://n6nsdiyde3aq" path="res://sprites/misc/rockground/AmbientOcclusionMap(1).png" id="2_k26cn"]

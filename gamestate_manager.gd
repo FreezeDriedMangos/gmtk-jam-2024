@@ -22,15 +22,27 @@ var last_horror_spawn_tick: int
 	set(value):
 		for entity in self.all_entities:
 			entity.set_queasy(value)
-
+		
+		if get_tree().current_scene.get_node('%RegularToothCountSprite') != null:
+			get_tree().current_scene.get_node('%RegularToothCountSprite').set_visible(not value)
+			get_tree().current_scene.get_node('%QueasyToothCountSprite').set_visible(value)
+	
 
 func _ready():
 	last_damage_tick = Time.get_ticks_msec()
 	return
 
+var first_register = true
 func register_entity(entity:Entity):
 	if(entity == null):
 		return
+	
+	if first_register:
+		print("first register")
+		first_register = false
+		get_tree().current_scene.get_node('%RegularToothCountSprite').set_visible(not queasy_mode_enabled)
+		get_tree().current_scene.get_node('%QueasyToothCountSprite').set_visible(queasy_mode_enabled)
+		print(get_tree().current_scene.get_node('%RegularToothCountSprite').name)
 	
 	entity.set_queasy(queasy_mode_enabled)
 	
