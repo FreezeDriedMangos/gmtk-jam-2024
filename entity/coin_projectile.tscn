@@ -21,9 +21,8 @@ material = SubResource("StandardMaterial3D_yselv")
 material = SubResource("StandardMaterial3D_ub4vm")
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="CoinProjectile" type="CharacterBody3D" node_paths=PackedStringArray("collider_area")]
+[node name="CoinProjectile" type="CharacterBody3D"]
 script = ExtResource("1_hqn53")
-collider_area = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_xfy4b")

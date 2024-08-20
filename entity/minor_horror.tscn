@@ -89,16 +89,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MinorHorror" type="CharacterBody3D" node_paths=PackedStringArray("mesh", "collider_area", "default_sprite", "queasy_sprite")]
+[node name="MinorHorror" type="CharacterBody3D" node_paths=PackedStringArray("mesh", "default_sprite", "queasy_sprite")]
 script = ExtResource("1_drngm")
 latched = true
 damage_per_second = 0
-mesh = NodePath("Mesh")
 drill_rads_sec_default = 20.0
 drill_rads_sec_latched = 160.0
 drill_rads_sec_current = 160.0
 base_move_speed = 22.0
-collider_area = NodePath("")
+mesh = NodePath("Mesh")
+collider_area = null
 default_sprite = NodePath("RegularSprites")
 queasy_sprite = NodePath("QueasySprites")
 

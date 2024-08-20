@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cwjixlpvkbt42" path="res://entity/coin_projectile.tscn" id="8_xu5du"]
 [ext_resource type="AudioStream" uid="uid://beapeba0ssuj6" path="res://sound/Pellet Heck.wav" id="10_bw7jw"]
 [ext_resource type="Script" path="res://world_sound_manager.gd" id="11_n1p3e"]
-[ext_resource type="Material" uid="uid://ckjj51aujs1cq" path="res://rockfloor_mat.tres" id="11_unp3p"]
+[ext_resource type="Material" uid="uid://cmugoa86yl3od" path="res://rockfloor_mat.tres" id="11_unp3p"]
 [ext_resource type="Texture2D" uid="uid://c1foap1588mjh" path="res://sprites/default/single_tooth.png" id="12_b4mkj"]
 [ext_resource type="FontFile" uid="uid://ndmr3rwyy1mj" path="res://fonts/vintage-propagandist/Vintage Propagandist.ttf" id="13_lli1p"]
 [ext_resource type="Texture2D" uid="uid://cksq1rtv17hvp" path="res://sprites/default/money_coin.png" id="13_nv3kg"]
@@ -57,13 +57,14 @@ outline_color = Color(0, 0, 0, 1)
 [node name="ToothMech" parent="." node_paths=PackedStringArray("target") instance=ExtResource("1_6x8vs")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 34.3337)
 target = NodePath("../CthonicClient")
+radius = 1.0
 
 [node name="CthonicClient" parent="." node_paths=PackedStringArray("camera_that_wont_leave_like_dad", "move_target") instance=ExtResource("2_ndhfw")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, -139.213)
-camera_that_wont_leave_like_dad = NodePath("../Camera3D")
-move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 health = 1000
 radius = 50.0
+camera_that_wont_leave_like_dad = NodePath("../Camera3D")
+move_target = NodePath("../TEMPORARY_MONSTER_ATTRACTOR")
 
 [node name="HorrorSpawner" type="Node3D" parent="CthonicClient"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.325)
@@ -112,8 +113,8 @@ current = true
 fov = 5.0
 size = 11.476
 script = ExtResource("2_8ghd0")
-followed_entity = NodePath("../Fairy")
 height = 120.0
+followed_entity = NodePath("../ToothMech")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 4.94719e-06, -115.973)

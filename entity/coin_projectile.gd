@@ -10,6 +10,7 @@ var time_spawned_s:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	velocity = Vector3.FORWARD*speed
 	time_spawned_s = Time.get_unix_time_from_system()
 	pass # Replace with function body.
 

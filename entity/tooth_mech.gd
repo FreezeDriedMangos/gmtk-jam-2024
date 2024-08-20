@@ -12,29 +12,16 @@ var firing = false
 var firing_interval_ms = 60
 var last_shot_ms = 0.0
 
-var mouseScreenPos = Vector2()
+var desired_direction = Vector2()
 
 var wad_projectile_resource = preload("res://entity/wad_projectile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	base_move_speed = 0.1
+	base_move_speed = 1.1
 	radius = 10
 	pass # Replace with function body.
-
-func _input(event):
-	# Mouse in viewport coordinates.
-	if event is InputEventMouseButton:
-		#print("Mouse Click/Unclick at: ", event.position)
-		if event.button_index == 1:
-			firing = event.pressed
-	if event is InputEventKey:
-		if event.as_text() == 'w':
-			walking = true
-
-	elif event is InputEventMouseMotion:
-		mouseScreenPos = event.position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -51,17 +38,11 @@ func _physics_process(delta: float) -> void:
 
 	cannon.global_rotation.y += angle_delta
 
-func raycast_from_mouse():
-	var ray_start = camera.project_ray_origin(mouseScreenPos)
-	var ray_end = ray_start + camera.project_ray_normal(mouseScreenPos) * 1000
-	var world3d : World3D = get_world_3d()
-	var space_state = world3d.direct_space_state
+	#set velocity based on walkingness and direction
+	if walking:
+		velocity = desired_direction*base_move_speed
+	else:
+		velocity = Vector3(0, 0, 0)
 
-	if space_state == null:
-		return
-
-	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
-	query.collide_with_areas = true
-
-	var result = space_state.intersect_ray(query)
-	return result["position"]
+	# move in the direction of velocity
+	super(delta)
