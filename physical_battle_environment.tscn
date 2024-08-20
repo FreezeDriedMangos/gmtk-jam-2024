@@ -160,3 +160,9 @@ text = "0"
 label_settings = SubResource("LabelSettings_ai2a8")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 14, 0)
+light_color = Color(1, 0.513726, 1, 1)
+light_energy = 0.1
+shadow_enabled = true

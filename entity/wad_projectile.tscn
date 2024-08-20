@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bve5ubycgtcru" path="res://sprites/default/money_stack.png" id="2_u1h5b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wyy22"]
+height = 63.0826
+radius = 15.9847
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_te3dw"]
+transparency = 1
 albedo_texture = ExtResource("2_u1h5b")
 texture_filter = 0
 
@@ -26,7 +29,19 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 
 shape = SubResource("CylinderShape3D_wyy22")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-2.8401e-06, 31.388, 5.24537e-08, 0, -1.37201e-06, 1.2, 64.974, 1.37201e-06, 2.29282e-15, 0, 0, 0)
 mesh = SubResource("QuadMesh_lbqso")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 0)
+light_color = Color(0, 1, 0.592157, 1)
+light_energy = 80.0
+omni_range = 137.543
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+light_color = Color(0, 1, 0.592157, 1)
+light_energy = 80.0
+omni_range = 137.543
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
