@@ -47,3 +47,17 @@ stream = ExtResource("3_emq8k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00131226, -0.463013, 0)
 shape = SubResource("BoxShape3D_tfoms")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, -1.77636e-15, 8.74228e-08, 1.86729e-08, 0.976923, 0.213593, -8.54053e-08, 0.213593, -0.976923, -0.181425, 0.046752, 0.24535)
+light_energy = 11.88
+spot_range = 25.0
+spot_angle = 14.5809
+spot_angle_attenuation = 1.8025
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, -1.77636e-15, 8.74228e-08, 1.86729e-08, 0.976923, 0.213593, -8.54053e-08, 0.213593, -0.976923, 0.175502, 0.046752, 0.24535)
+light_energy = 11.88
+spot_range = 25.0
+spot_angle = 14.5809
+spot_angle_attenuation = 1.8025

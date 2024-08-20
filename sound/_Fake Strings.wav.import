@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bhed25ga0iajl"
+path="res://.godot/imported/_Fake Strings.wav-210137cff16865ff0dc73c5d2c9ca0db.sample"
+
+[deps]
+
+source_file="res://sound/_Fake Strings.wav"
+dest_files=["res://.godot/imported/_Fake Strings.wav-210137cff16865ff0dc73c5d2c9ca0db.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

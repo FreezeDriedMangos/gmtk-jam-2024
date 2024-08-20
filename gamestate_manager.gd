@@ -51,6 +51,8 @@ func kill_entity(entity:Entity):
 	elif(entity is CoinProjectile):
 		coin_projectiles.erase(entity)
 	all_entities.erase(entity)
+	
+	entity.queue_free()
 
 	despawn_array.append(entity)
 
@@ -90,7 +92,7 @@ func _process(delta):
 	#handle "collisions"
 	#
 
-	
+
 
 	var i = 0
 	for horror in minor_horrors:
