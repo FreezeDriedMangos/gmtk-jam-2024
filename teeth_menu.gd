@@ -26,3 +26,4 @@ func _process(delta: float) -> void:
 	if been_goin_for >= 2:
 		print("done!")
 		goin = false
+		get_tree().change_scene_to_file("res://physical_battle_environment.tscn")
