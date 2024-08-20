@@ -9,7 +9,7 @@ const CANNON_DEGREES_TURN_PER_SECOND = 30
 
 var walking
 var firing = false
-var firing_interval_ms = 60
+var firing_interval_ms = 600
 var last_shot_ms = 0.0
 
 var desired_direction = Vector3()
