@@ -299,6 +299,6 @@ texture = SubResource("GradientTexture2D_6puxr")
 [connection signal="pressed" from="TeethMenu/StartGameButton" to="MainMenuController" method="start_game"]
 [connection signal="pressed" from="QueasyMenu/QueasyModeDisableButton" to="MainMenuController" method="toggle_queasy"]
 [connection signal="pressed" from="QueasyMenu/StartGameButton" to="MainMenuController" method="start_game"]
-[connection signal="pressed" from="QueasyModal/QueasyModeEnableButton" to="MainMenuController" method="close_modal"]
 [connection signal="pressed" from="QueasyModal/QueasyModeEnableButton" to="MainMenuController" method="toggle_queasy"]
+[connection signal="pressed" from="QueasyModal/QueasyModeEnableButton" to="MainMenuController" method="close_modal"]
 [connection signal="pressed" from="QueasyModal/ContinueButton" to="MainMenuController" method="close_modal"]
