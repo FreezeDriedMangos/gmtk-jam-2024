@@ -45,7 +45,7 @@ spot_angle_attenuation = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.223214)
 
 [node name="RegularSpritesTransform" type="Node3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+transform = Transform3D(-3.0598e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.0598e-08, 0, 0, 0)
 
 [node name="RegularSprites" type="Node3D" parent="RegularSpritesTransform"]
 transform = Transform3D(-4.37114e-07, 0, 10, 0, 5, 0, -10, 0, -4.37114e-07, 0, 0, 0)
@@ -110,4 +110,5 @@ omni_range = 10.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_42wrm")
+volume_db = 6.0
 autoplay = true
