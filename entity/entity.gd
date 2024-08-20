@@ -11,12 +11,14 @@ func _ready():
 	GamestateManagerGlobal.register_entity(self)
 
 func die():
-	GamestateManagerGlobal.kill_entity(self)
+	GamestateManagerGlobal.kill_entity(self, null)
 
-func take_damage(damage:int):
+func take_damage(damage:int)->bool:
 	health -= damage
 	if(health < 0):
-		die()
+		return true
+	else:
+		return false
 
 func is_game_paused():
 	return GamestateManagerGlobal.is_paused()

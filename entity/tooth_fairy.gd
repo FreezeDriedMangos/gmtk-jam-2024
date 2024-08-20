@@ -14,6 +14,7 @@ class_name ToothFairy extends Entity
 @export var boosting_fov_multiplier:float = 1.5
 
 @export var gun_sound:AudioStreamPlayer3D
+@export var teeth:int = 0
 
 var facing: float = 0
 
@@ -129,9 +130,15 @@ func _physics_process(delta: float) -> void:
 	self.position += delta * self.velocity
 
 func fire(shot_position:Vector3, shot_velocity:Vector3):
+	if teeth - 1 <= 0:
+		print("out of ammo")
+		return
+
+	teeth -= 1
 	var shot:CoinProjectile = coin_projectile_resource.instantiate()
 	get_parent().add_child(shot)
 	shot.scale = Vector3(1,1,1) * 0.125
 	shot.velocity = shot_velocity
 	shot.position = shot_position
 	gun_sound.play()
+	
