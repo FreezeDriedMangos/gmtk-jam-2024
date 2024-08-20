@@ -24,6 +24,8 @@ func _ready() -> void:
 
 func _input(event):
 	# Mouse in viewport coordinates.
+	if event is InputEventMouseMotion:
+		mouseScreenPos = event.position
 
 	# handle player input to the fairy
 	if followed_entity is ToothFairy:
@@ -34,18 +36,14 @@ func _input(event):
 				followed_tooth_fairy.boosting = event.pressed
 			elif event.button_index == 2:
 				followed_tooth_fairy.firing = event.pressed
-		elif event is InputEventMouseMotion:
-			mouseScreenPos = event.position
+	
 			
 	elif followed_entity is ToothMech:
 		followed_tooth_mech = (followed_entity as ToothMech) 
 		if event is InputEventKey:
 			print(event.as_text())
-			if event.as_text() == 'w':
+			if event.as_text() == 'W':
 				followed_tooth_mech.walking = event.pressed
-			elif event is InputEventMouseMotion:
-				mouseScreenPos = event.position
-				followed_tooth_mech.desired_direction = Vector3(mouseScreenPos.x, 0, mouseScreenPos.y)
 
 	# handle player input to the mech
 
@@ -54,8 +52,15 @@ func _input(event):
 func _process(delta: float) -> void:
 	if followed_entity is ToothFairy:
 		self.position = followed_entity.position + 0.15*followed_entity.velocity + Vector3(0, height, 0)
+		
 	elif followed_entity is ToothMech:
+		var mouseWorldPos = raycast_from_mouse()
+		var mouseRelPos = mouseWorldPos - self.position
+		followed_entity.desired_direction = Vector3(mouseRelPos.x, 0, mouseRelPos.z)
 		self.position = followed_entity.position + 5*followed_entity.velocity + Vector3(0, height, 0)
+		fov = 30
+
+	
 
 func raycast_from_mouse():
 	var ray_start = project_ray_origin(mouseScreenPos)

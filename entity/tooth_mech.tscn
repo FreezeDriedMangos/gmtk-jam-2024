@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://8r5cmlci5ks5"]
+[gd_scene load_steps=11 format=3 uid="uid://8r5cmlci5ks5"]
 
 [ext_resource type="Script" path="res://entity/tooth_mech.gd" id="1_tljki"]
-[ext_resource type="AudioStream" uid="uid://kkjmejkkthlt" path="res://sound/hovercraft_loop.wav" id="3_42wrm"]
 [ext_resource type="PackedScene" uid="uid://dmkfydsnbq5i1" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
 [ext_resource type="Texture2D" uid="uid://draq7strxknux" path="res://sprites/default/mech/mech_strata_1.png" id="3_6mvuv"]
+[ext_resource type="AudioStream" uid="uid://kkjmejkkthlt" path="res://sound/hovercraft_loop.wav" id="3_42wrm"]
 [ext_resource type="Texture2D" uid="uid://cqv1tj1kfiwq3" path="res://sprites/default/mech/mech_strata_2.png" id="4_jwool"]
 [ext_resource type="Texture2D" uid="uid://cxoaxsd5c0bpw" path="res://sprites/default/mech/mech_strata_3.png" id="5_1ey7c"]
 [ext_resource type="Texture2D" uid="uid://dtol5vdl7x3je" path="res://sprites/default/mech/mech_strata_4.png" id="6_hyqnw"]

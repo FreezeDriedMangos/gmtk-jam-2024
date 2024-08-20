@@ -12,14 +12,14 @@ var firing = false
 var firing_interval_ms = 60
 var last_shot_ms = 0.0
 
-var desired_direction = Vector2()
+var desired_direction = Vector3()
 
 var wad_projectile_resource = preload("res://entity/wad_projectile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
-	base_move_speed = 1.1
+	base_move_speed = 5.0
 	radius = 10
 	pass # Replace with function body.
 
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	var turn_amt = deg_to_rad(CANNON_DEGREES_TURN_PER_SECOND) * delta
-	var cannon := $Cannon as Node3D
+	var cannon := $TOOTH_MECH_queasyModel/Cannon as Node3D
 	var target_pos := Vector2(target.global_position.x, target.global_position.y)
 	var cannon_pos := Vector2(cannon.global_position.x, cannon.global_position.y)
 	var angle := (target_pos - cannon_pos).angle()
@@ -40,9 +40,9 @@ func _physics_process(delta: float) -> void:
 
 	#set velocity based on walkingness and direction
 	if walking:
-		velocity = desired_direction*base_move_speed
+		velocity = desired_direction.normalized()*base_move_speed
 	else:
-		velocity = 0
+		velocity = Vector3(0,0,0)
 	
 	# move in the direction of velocity
 	super(delta)
