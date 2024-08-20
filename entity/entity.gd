@@ -4,7 +4,7 @@ class_name Entity extends Node3D
 @export var radius:float = 1.0
 @export var base_move_speed : float = 1.0
 @export var collider_area:Area3D
-
+@export var velocity = Vector3(0,0,0)
 @export var default_sprite: Node3D
 @export var queasy_sprite: Node3D
 var queasy_mode_enabled: bool
@@ -13,6 +13,9 @@ var paused:bool
 
 func _ready():
 	GamestateManagerGlobal.register_entity(self)
+
+func _physics_process(delta: float):
+	self.position += self.velocity*delta
 
 func die():
 	GamestateManagerGlobal.kill_entity(self, null)

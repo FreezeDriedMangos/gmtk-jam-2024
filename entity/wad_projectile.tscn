@@ -6,6 +6,10 @@
 
 [node name="WadProjectile" type="Node3D"]
 script = ExtResource("1_rrkyw")
+health = null
+radius = null
+base_move_speed = null
+velocity = null
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

@@ -5,7 +5,6 @@ class_name ToothFairy extends Entity
 @export var strafe_speed: float = 5
 @export var tooth_mech: Node3D
 
-@export var velocity = Vector3()
 @export var max_friction: float = 1.9
 @export var min_friction: float = 0.9
 @export var max_turn_speed: float = 0.09
@@ -125,7 +124,7 @@ func _physics_process(delta: float) -> void:
 	# update player position
 	#
 
-	self.position += delta * self.velocity
+	super(delta)
 
 func fire(shot_position:Vector3, shot_velocity:Vector3):
 	if teeth - 1 <= 0:
