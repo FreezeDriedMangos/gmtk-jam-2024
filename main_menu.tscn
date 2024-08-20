@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw7vliy83iofa"]
+[gd_scene load_steps=14 format=3 uid="uid://cw7vliy83iofa"]
 
 [ext_resource type="Script" path="res://main_menu_controller.gd" id="1_sxlmf"]
 [ext_resource type="Texture2D" uid="uid://r6hgfdcxxxit" path="res://sprites/default/menu/main_menu_no_selection.png" id="2_cm1fu"]
+[ext_resource type="Script" path="res://teeth_menu.gd" id="2_ia7rh"]
 [ext_resource type="Texture2D" uid="uid://bn5sj236khnsg" path="res://sprites/default/menu/main_menu_hover_left.png" id="3_ctkvu"]
 [ext_resource type="Texture2D" uid="uid://dm006qlm6o2xk" path="res://sprites/default/menu/main_menu_lowers.png" id="3_xaud6"]
 [ext_resource type="Texture2D" uid="uid://odjhw66w1jo0" path="res://sprites/default/menu/single_upper.png" id="4_2s0sg"]
@@ -45,7 +46,11 @@ sprite_left_clicked = NodePath("../TeethMenu/TeethUpper/LeftClicked")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="TeethMenu" type="Node2D" parent="."]
+[node name="TeethMenu" type="Node2D" parent="." node_paths=PackedStringArray("uppers", "lowers")]
+unique_name_in_owner = true
+script = ExtResource("2_ia7rh")
+uppers = NodePath("TeethUpper")
+lowers = NodePath("TeethLower")
 
 [node name="TeethUpper" type="Node2D" parent="TeethMenu"]
 

@@ -7,16 +7,21 @@ extends Node
 
 var starting_game = false
 
+var queasy_mode = false
+
 func start_game():
 	disable_all_sprites()
 	sprite_left_clicked.set_visible(true)
 	starting_game = true
 	print("Game starting!")
+	if not queasy_mode:
+		%TeethMenu.get_goin()
 
 func toggle_queasy():
 	if starting_game:
 		return
 	
+	queasy_mode = not queasy_mode
 	print("toggling queasy")
 
 func hover_left():

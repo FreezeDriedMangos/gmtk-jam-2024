@@ -82,8 +82,19 @@ drill_rads_sec_current = 80.0
 health = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 environment = SubResource("Environment_xv67j")
 camera_attributes = SubResource("CameraAttributesPractical_g2bu4")
+compositor = null
+script = null
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy")]
 unique_name_in_owner = true
