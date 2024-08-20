@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://8r5cmlci5ks5"]
+[gd_scene load_steps=10 format=3 uid="uid://8r5cmlci5ks5"]
 
 [ext_resource type="Script" path="res://entity/tooth_mech.gd" id="1_tljki"]
 [ext_resource type="PackedScene" uid="uid://dmkfydsnbq5i1" path="res://model/TOOTH_MECH.glb" id="2_occj6"]
+[ext_resource type="Texture2D" uid="uid://draq7strxknux" path="res://sprites/default/mech/mech_strata_1.png" id="3_6mvuv"]
+[ext_resource type="Texture2D" uid="uid://cqv1tj1kfiwq3" path="res://sprites/default/mech/mech_strata_2.png" id="4_jwool"]
+[ext_resource type="Texture2D" uid="uid://cxoaxsd5c0bpw" path="res://sprites/default/mech/mech_strata_3.png" id="5_1ey7c"]
+[ext_resource type="Texture2D" uid="uid://dtol5vdl7x3je" path="res://sprites/default/mech/mech_strata_4.png" id="6_hyqnw"]
+[ext_resource type="Texture2D" uid="uid://cnnjwpi4d23g3" path="res://sprites/default/mech/mech_strata_5.png" id="7_6w65w"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rucmi"]
 height = 3.04178
@@ -11,19 +16,19 @@ radius = 1.42809
 top_radius = 0.25
 bottom_radius = 0.15
 
-[node name="ToothMech" type="Node3D" node_paths=PackedStringArray("collider_area")]
+[node name="ToothMech" type="Node3D" node_paths=PackedStringArray("collider_area", "default_sprite", "queasy_sprite")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_tljki")
 radius = 100.0
 collider_area = NodePath("Collision")
+default_sprite = NodePath("RegularSpritesTransform")
+queasy_sprite = NodePath("TOOTH_MECH_queasyModel")
 
 [node name="Collision" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01507, 0)
 shape = SubResource("CylinderShape3D_rucmi")
-
-[node name="TOOTH_MECH" parent="." instance=ExtResource("2_occj6")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.413899, 0.910323, 0, -0.910323, 0.413899, 0, 6.3836, 2.1642)
@@ -41,14 +46,48 @@ spot_angle_attenuation = 2.0
 [node name="CameraTarget" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.223214)
 
-[node name="Cannon" type="Node3D" parent="."]
+[node name="RegularSpritesTransform" type="Node3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="RegularSprites" type="Node3D" parent="RegularSpritesTransform"]
+transform = Transform3D(-4.37114e-07, 0, 10, 0, 5, 0, -10, 0, -4.37114e-07, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="RegularSpritesTransform/RegularSprites"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("3_6mvuv")
+
+[node name="Sprite3D2" type="Sprite3D" parent="RegularSpritesTransform/RegularSprites"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.154323, 0)
+texture_filter = 0
+texture = ExtResource("4_jwool")
+
+[node name="Sprite3D3" type="Sprite3D" parent="RegularSpritesTransform/RegularSprites"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.254323, 0)
+texture_filter = 0
+texture = ExtResource("5_1ey7c")
+
+[node name="Sprite3D4" type="Sprite3D" parent="RegularSpritesTransform/RegularSprites"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.354323, 0)
+texture_filter = 0
+texture = ExtResource("6_hyqnw")
+
+[node name="Sprite3D5" type="Sprite3D" parent="RegularSpritesTransform/RegularSprites"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.414323, 0)
+texture_filter = 0
+texture = ExtResource("7_6w65w")
+
+[node name="TOOTH_MECH_queasyModel" parent="." instance=ExtResource("2_occj6")]
+visible = false
+
+[node name="Cannon" type="Node3D" parent="TOOTH_MECH_queasyModel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cannon"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TOOTH_MECH_queasyModel/Cannon"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1, 0, 0)
 mesh = SubResource("CylinderMesh_r4i0i")
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Cannon"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="TOOTH_MECH_queasyModel/Cannon"]
 transform = Transform3D(-8.74228e-09, -0.0517638, 0.193185, 0, 0.193185, 0.0517638, -0.2, 2.26267e-09, -8.44439e-09, -1.2, -0.6, -0.3)
 light_energy = 100.0
 light_volumetric_fog_energy = 15.0
@@ -56,17 +95,17 @@ light_size = 0.2
 spot_range = 100.0
 spot_angle = 18.2813
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Cannon/SpotLight3D2"]
+[node name="OmniLight3D" type="OmniLight3D" parent="TOOTH_MECH_queasyModel/Cannon/SpotLight3D2"]
 light_energy = 10.0
 omni_range = 10.0
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Cannon"]
+[node name="SpotLight3D3" type="SpotLight3D" parent="TOOTH_MECH_queasyModel/Cannon"]
 transform = Transform3D(-8.74228e-09, -0.0517638, 0.193185, 0, 0.193185, 0.0517638, -0.2, 2.26267e-09, -8.44439e-09, -1.2, -0.6, 0.5)
 light_energy = 100.0
 light_size = 0.2
 spot_range = 100.0
 spot_angle = 18.2813
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Cannon/SpotLight3D3"]
+[node name="OmniLight3D" type="OmniLight3D" parent="TOOTH_MECH_queasyModel/Cannon/SpotLight3D3"]
 light_energy = 10.0
 omni_range = 10.0
