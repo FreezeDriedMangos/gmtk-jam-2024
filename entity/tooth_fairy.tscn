@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5gciopklwjbo"]
+[gd_scene load_steps=8 format=3 uid="uid://4pdybyqpfal3"]
 
 [ext_resource type="Script" path="res://entity/tooth_fairy.gd" id="1_lwayr"]
-[ext_resource type="Texture2D" uid="uid://dql3w62pwfoeb" path="res://sprites/default/tooth_fairy_skullbike.png" id="2_tito4"]
+[ext_resource type="Texture2D" uid="uid://c52wt85a8locy" path="res://sprites/default/tooth_fairy_skullbike.png" id="2_tito4"]
 [ext_resource type="AudioStream" uid="uid://di0n586e6m5jw" path="res://sound/mixkit-money-bag-drop-1989.wav" id="3_emq8k"]
+[ext_resource type="Texture2D" uid="uid://b7iekoxtnlnn" path="res://sprites/antidentiphobia/tooth_fairy.png" id="4_iaram"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21ui5"]
 
@@ -11,18 +12,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_tfoms"]
 size = Vector3(0.487854, 2.06177, 1)
 
-[node name="Fairy" type="Node3D" node_paths=PackedStringArray("gun_sound", "collider_area")]
+[node name="Fairy" type="Node3D" node_paths=PackedStringArray("gun_sound", "collider_area", "default_sprite", "queasy_sprite")]
 script = ExtResource("1_lwayr")
 boost_speed = 28.0
 max_friction = 1.0
 min_friction = 0.95
 gun_sound = NodePath("CoinGunSound")
 collider_area = NodePath("Area3D3")
-
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0534773)
-texture_filter = 0
-texture = ExtResource("2_tito4")
+default_sprite = NodePath("RegularSprites")
+queasy_sprite = NodePath("QueasySprites")
 
 [node name="CameraTarget" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.31733, 0.66548)
@@ -61,3 +59,18 @@ light_energy = 11.88
 spot_range = 25.0
 spot_angle = 14.5809
 spot_angle_attenuation = 1.8025
+
+[node name="RegularSprites" type="Node3D" parent="."]
+
+[node name="Sprite3D2" type="Sprite3D" parent="RegularSprites"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0534773)
+texture_filter = 0
+texture = ExtResource("2_tito4")
+
+[node name="QueasySprites" type="Node3D" parent="."]
+visible = false
+
+[node name="Sprite3D3" type="Sprite3D" parent="QueasySprites"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.0534773)
+texture_filter = 0
+texture = ExtResource("4_iaram")

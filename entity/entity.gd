@@ -5,6 +5,10 @@ class_name Entity extends Node3D
 @export var base_move_speed : float = 1.0
 @export var collider_area:Area3D
 
+@export var default_sprite: Node3D
+@export var queasy_sprite: Node3D
+var queasy_mode_enabled: bool
+
 var paused:bool
 
 func _ready():
@@ -20,3 +24,10 @@ func take_damage(damage:int):
 
 func is_game_paused():
 	return GamestateManagerGlobal.is_paused()
+
+func set_queasy(queasy):
+	queasy_mode_enabled = queasy
+	
+	if default_sprite and queasy_sprite:
+		default_sprite.set_visible(queasy_mode_enabled)
+		queasy_sprite.set_visible(not queasy_mode_enabled)
