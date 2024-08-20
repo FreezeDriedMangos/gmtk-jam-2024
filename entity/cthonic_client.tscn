@@ -1,23 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://px6hlfdd5p2d"]
+[gd_scene load_steps=13 format=3 uid="uid://px6hlfdd5p2d"]
 
 [ext_resource type="Script" path="res://entity/cthonic_client.gd" id="1_ll0ic"]
 [ext_resource type="Texture2D" uid="uid://b46xgl54r0eb4" path="res://placeholder_boss.png" id="2_uxpwt"]
 [ext_resource type="Script" path="res://boss_health.gd" id="3_lo03c"]
-[ext_resource type="Texture2D" uid="uid://b7ug2m78i17cl" path="res://sprites/healthbar/placeholder_healthbar_under.png" id="4_ms2v4"]
-[ext_resource type="Texture2D" uid="uid://dygnox3qi0ry5" path="res://sprites/healthbar/placeholder_healthbar_over.png" id="5_lsbrd"]
-[ext_resource type="Texture2D" uid="uid://ca226kpk243oe" path="res://sprites/healthbar/placeholder_healthbar_bar.png" id="6_ykw8j"]
+[ext_resource type="Texture2D" uid="uid://b7ug2m78i17cl" path="res://sprites/misc/healthbar/placeholder_healthbar_under.png" id="4_ms2v4"]
+[ext_resource type="Texture2D" uid="uid://dygnox3qi0ry5" path="res://sprites/misc/healthbar/placeholder_healthbar_over.png" id="5_lsbrd"]
+[ext_resource type="Texture2D" uid="uid://ca226kpk243oe" path="res://sprites/misc/healthbar/placeholder_healthbar_bar.png" id="6_ykw8j"]
 [ext_resource type="Texture2D" uid="uid://dmxureu3m76r7" path="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_1.png" id="7_sbb27"]
 [ext_resource type="Texture2D" uid="uid://ctnrso8e0e8t" path="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_2.png" id="8_r6esv"]
 [ext_resource type="Texture2D" uid="uid://ctwdjehho6dd7" path="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_3.png" id="9_5y4t6"]
 [ext_resource type="Texture2D" uid="uid://caxcbokrk1d3" path="res://sprites/default/thats_a_major_horror_alright/brood_mother_strata_4.png" id="10_v3imf"]
+[ext_resource type="AudioStream" uid="uid://bo4rxjq8airvi" path="res://sound/glug-lgu-glugl.wav" id="11_wcm8t"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nl1ih"]
 height = 12.4368
 radius = 3.88676
 
-[node name="CthonicClient" type="Node3D"]
+[node name="CthonicClient" type="Node3D" node_paths=PackedStringArray("throat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.325)
 script = ExtResource("1_ll0ic")
+throat = NodePath("AudioStreamPlayer3D")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.8006, 0)
@@ -80,3 +82,7 @@ texture = ExtResource("9_5y4t6")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.26, 0)
 texture_filter = 0
 texture = ExtResource("10_v3imf")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_wcm8t")
+autoplay = true
