@@ -1,7 +1,5 @@
 class_name WadProjectile extends Entity
 
-@onready var body:Node3D = $Body
-
 var speed:float = 12.0
 var damage:int = 1000.0
 var spin:Vector3 = Vector3(randf_range(-2.0, 2.0), randf_range(-2.0, 2.0), randf_range(-2.0, 2.0))*1.0
@@ -21,7 +19,6 @@ func _process(delta):
 	if(current_s - time_spawned_s > time_to_live_ms/1000.0):
 		die()
 
-	body.rotation += spin*delta
 	position += velocity*delta
 
 

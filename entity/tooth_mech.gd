@@ -38,6 +38,14 @@ func _physics_process(delta: float) -> void:
 
 	cannon.global_rotation.y += angle_delta
 
+	
+	if firing:
+		var current_ms = Time.get_ticks_msec()
+		if current_ms - last_shot_ms > firing_interval_ms:
+			last_shot_ms = current_ms
+			fire(self.position + desired_direction.normalized()*3.5, self.velocity + desired_direction.normalized()*18)
+
+
 	#set velocity based on walkingness and direction
 	if walking:
 		velocity = desired_direction.normalized()*base_move_speed
@@ -46,3 +54,17 @@ func _physics_process(delta: float) -> void:
 
 	# move in the direction of velocity
 	super(delta)
+
+func fire(shot_position:Vector3, shot_velocity:Vector3):
+	var tooth_fairy = GamestateManagerGlobal.tooth_fairy
+
+	if tooth_fairy.teeth - 1 <= 0:
+		print("out of ammo")
+		return
+
+	tooth_fairy.teeth -= 1
+	var shot:WadProjectile = wad_projectile_resource.instantiate()
+	get_parent().add_child(shot)
+	shot.scale = Vector3(1,1,1) * 0.125
+	shot.velocity = shot_velocity
+	shot.position = shot_position

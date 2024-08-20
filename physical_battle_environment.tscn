@@ -112,7 +112,7 @@ current = true
 fov = 5.0
 size = 11.476
 script = ExtResource("2_8ghd0")
-followed_entity = NodePath("../ToothMech")
+followed_entity = NodePath("../Fairy")
 height = 120.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]

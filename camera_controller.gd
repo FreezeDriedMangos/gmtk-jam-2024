@@ -52,6 +52,10 @@ func _input(event):
 			elif event.as_text() == 'Space' && event.pressed:
 				followed_entity = GamestateManagerGlobal.tooth_fairy
 				event.pressed = false
+		elif event is InputEventMouseButton:
+			#print("Mouse Click/Unclick at: ", event.position)
+			if event.button_index == 1:
+				followed_tooth_mech.firing = event.pressed
 
 	# handle player input to the mech
 
