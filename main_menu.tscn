@@ -170,6 +170,15 @@ vertical_alignment = 1
 unique_name_in_owner = true
 visible = false
 
+[node name="Attributions2" type="Label" parent="QueasyMenu"]
+offset_left = -565.0
+offset_top = 278.0
+offset_right = 10.0
+offset_bottom = 315.0
+text = "Game by the Dentiphobia Team  -  Font by Loki Gwynbleidd on Font Library "
+label_settings = SubResource("LabelSettings_xv2e4")
+vertical_alignment = 1
+
 [node name="Background2" type="Sprite2D" parent="QueasyMenu"]
 z_index = -10
 scale = Vector2(4.7307, 719.914)
