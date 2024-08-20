@@ -13,6 +13,8 @@ class_name ToothFairy extends Entity
 @export var base_fov:float = 5.0
 @export var boosting_fov_multiplier:float = 1.5
 
+@export var gun_sound:AudioStreamPlayer3D
+
 var facing: float = 0
 
 @export var camera: Camera3D
@@ -44,7 +46,6 @@ func _input(event):
 		elif event.button_index == 2:
 			firing = event.pressed
 	elif event is InputEventMouseMotion:
-		var rect = camera.get_viewport().size
 		mouseScreenPos = event.position
 
 
@@ -115,12 +116,9 @@ func _physics_process(delta: float) -> void:
 		var current_ms = Time.get_ticks_msec()
 		if current_ms - last_shot_ms > firing_interval_ms:
 			last_shot_ms = current_ms
+			fire(self.position + desired_dir.normalized()*0.5, self.velocity + desired_dir.normalized()*18)
 
-			var shot:CoinProjectile = coin_projectile_resource.instantiate()
-			get_parent().add_child(shot)
-			shot.scale = Vector3(1,1,1) * 0.125
-			shot.velocity = self.velocity + desired_dir.normalized()*18
-			shot.position = self.position + desired_dir.normalized()*0.5
+			
 			
 
 
@@ -129,3 +127,11 @@ func _physics_process(delta: float) -> void:
 	#
 
 	self.position += delta * self.velocity
+
+func fire(shot_position:Vector3, shot_velocity:Vector3):
+	var shot:CoinProjectile = coin_projectile_resource.instantiate()
+	get_parent().add_child(shot)
+	shot.scale = Vector3(1,1,1) * 0.125
+	shot.velocity = shot_velocity
+	shot.position = shot_position
+	gun_sound.play()

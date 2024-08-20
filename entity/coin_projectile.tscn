@@ -21,8 +21,9 @@ material = SubResource("StandardMaterial3D_yselv")
 material = SubResource("StandardMaterial3D_ub4vm")
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="CoinProjectile" type="Node3D"]
+[node name="CoinProjectile" type="Node3D" node_paths=PackedStringArray("collider_area")]
 script = ExtResource("1_hqn53")
+collider_area = NodePath("Area3D")
 
 [node name="Area3D" type="Area3D" parent="."]
 

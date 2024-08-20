@@ -90,6 +90,8 @@ func _process(delta):
 	#handle "collisions"
 	#
 
+	
+
 	var i = 0
 	for horror in minor_horrors:
 		i+=1
@@ -103,11 +105,9 @@ func _process(delta):
 		if horror.position.distance_to(tooth_mech.position) < (horror.radius + tooth_mech.radius):
 			if !horror.latched:
 				horror.latch()
-				
 			else:
 				if damage_tick:
 					apply_damage(horror.damage_per_second, tooth_mech, horror)
-
 		else:
 			if horror.latched:
 				horror.unlatch()

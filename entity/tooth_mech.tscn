@@ -11,10 +11,11 @@ radius = 1.42809
 top_radius = 0.25
 bottom_radius = 0.15
 
-[node name="ToothMech" type="Node3D"]
+[node name="ToothMech" type="Node3D" node_paths=PackedStringArray("collider_area")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_tljki")
 radius = 100.0
+collider_area = NodePath("Collision")
 
 [node name="Collision" type="Area3D" parent="."]
 
@@ -50,6 +51,8 @@ mesh = SubResource("CylinderMesh_r4i0i")
 [node name="SpotLight3D2" type="SpotLight3D" parent="Cannon"]
 transform = Transform3D(-8.74228e-09, -0.0517638, 0.193185, 0, 0.193185, 0.0517638, -0.2, 2.26267e-09, -8.44439e-09, -1.2, -0.6, -0.3)
 light_energy = 100.0
+light_volumetric_fog_energy = 15.0
+light_size = 0.2
 spot_range = 100.0
 spot_angle = 18.2813
 
@@ -60,6 +63,7 @@ omni_range = 10.0
 [node name="SpotLight3D3" type="SpotLight3D" parent="Cannon"]
 transform = Transform3D(-8.74228e-09, -0.0517638, 0.193185, 0, 0.193185, 0.0517638, -0.2, 2.26267e-09, -8.44439e-09, -1.2, -0.6, 0.5)
 light_energy = 100.0
+light_size = 0.2
 spot_range = 100.0
 spot_angle = 18.2813
 

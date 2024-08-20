@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cba5h1v4kswxb"]
+[gd_scene load_steps=20 format=3 uid="uid://cba5h1v4kswxb"]
 
 [ext_resource type="Script" path="res://entity/minor_horror.gd" id="1_drngm"]
 [ext_resource type="Texture2D" uid="uid://c3xup71ndptis" path="res://sprites/default/minor_horror/strata_1/minor_horror_strata_1_frame_1.png" id="2_c4l82"]
@@ -85,7 +85,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MinorHorror" type="Node3D" node_paths=PackedStringArray("mesh")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ffpei"]
+radius = 0.509354
+
+[node name="MinorHorror" type="Node3D" node_paths=PackedStringArray("mesh", "collider_area")]
 script = ExtResource("1_drngm")
 latched = true
 damage_per_second = 0
@@ -94,9 +97,10 @@ drill_rads_sec_default = 20.0
 drill_rads_sec_latched = 160.0
 drill_rads_sec_current = 160.0
 base_move_speed = 22.0
+collider_area = NodePath("Area3D")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.996812, -0.0797789, -7.50574e-08, 0.0684948, -0.85582, -0.512718, 0.040904, -0.511084, 0.858557, 0, 0, 0)
+transform = Transform3D(-0.247708, 0.968834, -1.68329e-07, 0.949766, 0.242833, 0.197422, 0.191269, 0.0489029, -0.980319, 0, 0, 0)
 mesh = SubResource("BoxMesh_fvn5y")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
@@ -109,5 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.46851e-10, -0.0125105)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_44l1g")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.640312, 0.563083, 0.522435, -0.726358, 0.665077, 0.173424, -0.249807, -0.49052, 0.834857, 1.08542, 0.802331, 1.08542)
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_ffpei")

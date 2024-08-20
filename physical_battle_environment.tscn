@@ -20,9 +20,17 @@ sky_material = SubResource("PanoramaSkyMaterial_aqfvk")
 background_mode = 2
 sky = SubResource("Sky_btq5d")
 ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_color = Color(1, 0.258824, 0.258824, 1)
+glow_enabled = true
+glow_intensity = 0.34
+glow_bloom = 0.13
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 4.0
+fog_enabled = true
+fog_light_color = Color(0.776471, 0.45098, 0.721569, 1)
+volumetric_fog_enabled = true
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0nsna"]
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_g2bu4"]
 
 [node name="PhysicalBattleEnvironment" type="Node3D"]
 
@@ -66,7 +74,7 @@ health = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xv67j")
-camera_attributes = SubResource("CameraAttributesPractical_0nsna")
+camera_attributes = SubResource("CameraAttributesPractical_g2bu4")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("fairy")]
 unique_name_in_owner = true
@@ -85,5 +93,6 @@ texture = ExtResource("8_tuuuo")
 
 [node name="HorrorSpawner" type="Node3D" parent="."]
 script = ExtResource("8_1od3q")
+spawn_interval_ms = 250
 
 [node name="CoinProjectile" parent="." instance=ExtResource("8_xu5du")]
